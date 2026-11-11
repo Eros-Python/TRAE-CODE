@@ -173,8 +173,29 @@ bullet('Genpact：', '2018-11 与 Bayer 签多年期协议，PVAI 套件接入 B
 bullet('Genpact 与 MHRA 的关系（更正）：', 'MHRA 不是 Genpact 的 PV 实施客户。Genpact 2018-06 收购 Commonwealth Informatics，其产品 CVW（Commonwealth Vigilance Workbench）被 FDA、MHRA 等监管机构使用——属"被收购产品的用户"，与"PV 系统实施项目"性质不同，不应并入案例证据。原文：https://media.genpact.com/2018-06-11-Genpact-Accelerates-Strategy-to-Establish-New-Industry-Standard-for-Pharmacovigilance-Using-AI-and-Machine-Learning-Technologies')
 bullet('Accenture：', '2019-12-16 与 UCB 合作，UCB 上线 INTIENT™ Pharmacovigilance；由 Accenture 运营团队代管病例处理、平台提供 AI 增强——是"平台 + 代运营"模式的直接样本。原文：https://newsroom.accenture.com/news/ucb-and-accenture-collaborate-to-accelerate-data-processing-and-help-improve-patient-safety.htm ｜服务介绍 PDF：https://www.accenture.com/content/dam/accenture/final/a-com-migration/pdf/pdf-105/accenture-pharmacovigilance-services2.pdf')
 bullet('TCS：', 'AstraZeneca 案例——整合 7 个区域中心的患者安全与法规流程，覆盖 70+ 已上市产品、100+ 在研产品、130+ 国家，投入 500+ 药师/医师；其 AE 病例处理经 FDA、MHRA、瑞典药监检查无重大缺陷。原文：https://www.tcs.com/what-we-do/industries/life-sciences/case-study/astrazeneca-enhance-patient-safety-regulatory-services ；另有罗氏中国 PV testimonial：https://www.tcs.com/cn-zh/what-we-do/services/cognitive-business-operations/video/roche-china-pharmacovigilance-testimonial')
-bullet('分类提示：', 'Accenture（INTIENT Pharmacovigilance）与 TCS（TCS ADD™ Safety）均已有自有 PV 平台，并非纯人力外包——"服务托管型"与"平台型"的第一梯队边界正在模糊，这也是市场向平台+服务一体聚拢的又一佐证。TCS ADD Safety：https://www.tcs.com/what-we-do/products-platforms/tcs-add/solution/tcs-add-safety-solution')
+bullet('分类提示：', 'Accenture（INTIENT Pharmacovigilance）与 TCS（TCS ADD™ Safety）均有自有的 PV 自动化平台，但均不含自有安全数据库——"平台"与"数据库"是两件事，详见 2.5。TCS ADD Safety：https://www.tcs.com/what-we-do/products-platforms/tcs-add/solution/tcs-add-safety-solution')
 conclusion('全球拼"平台锁定"，中国拼"国产替代 + 轻量化"；AI 原生厂商是共同变量——梯队边界正在重排。')
+
+h2('2.5 服务托管型三家（Genpact / Accenture / TCS）：有没有自己的 PV 数据库？')
+para([('结论：三家均未推出自有的 PV 安全数据库（system of record）。', True, ACCENT),
+      ('他们做的是数据库之上的"AI 自动化层 + 人力代运营"，客户的病例数据仍存放在客户已有的安全数据库里（Oracle Argus、Veeva、或自研系统）。以下为各家官方表述的直接证据：', False, BODY)], space_after=6)
+bullet('Genpact（无自有数据库）：', '2018-11 与 Bayer 的协议明确写"Genpact\'s PVAI suite of capabilities will be applied to Bayer\'s existing pharmacovigilance database and IT systems"——是"应用于客户既有数据库"，不是替换它。其 AI 产品 Cora PharmacoVigilance 定位为病例处理层；2018 年收购 Commonwealth Informatics 获得的 CVW（Commonwealth Vigilance Workbench）是信号检测/信号评估分析工具，同样不是安全数据库。')
+bullet('Accenture（无自有数据库）：', 'INTIENT Pharmacovigilance 官网对"Machine pre-processing"的描述是"generate well-formed, quality output for import into enterprise safety systems"——产出物是"导入企业安全系统"，即位于数据库的上游。UCB 案例中，Accenture 提供的是"平台 + 运营团队代管病例处理"，UCB 的系统并未被替换。')
+bullet('TCS（无自有数据库）：', 'TCS ADD™ Safety 官网 Features 第一条即"Modular deployment with an interface to safety database"——模块化部署 + 对接安全数据库，明确定位为数据库的前端自动化，而非数据库本身。')
+para([('实施模式差异（平台厂商 vs 服务托管型）：', True, NAVY)], space_after=4)
+add_table(
+    ['维度', '平台厂商（Veeva / IQVIA / Argus）', '服务托管型（Genpact / Accenture / TCS）'],
+    [
+        ['卖什么', '系统本身：建库、存案、E2B 递交、定期报告', '人力 + 自动化能力：替客户处理病例，不卖数据库'],
+        ['数据归属', '数据落在厂商自有数据模型内，迁移需格式转换', '数据留在客户已有库，服务商只读取/处理'],
+        ['计价方式', '许可/订阅 + 实施费，按模块与用户数', '按病例量、FTE 或成果计费，随业务量弹性伸缩'],
+        ['上线周期', '6–18 个月（配置、验证、数据迁移、接口联调）', '数周–数月：先接管流程，自动化工具并行接入'],
+        ['合规责任', '厂商交付验证包，客户自行完成 IQ/OQ 与系统放行', '服务商承担 SOP、质量体系与监管检查应对'],
+        ['切换成本', '高：数据 + 流程双锁定，换系统近乎重建', '低：数据库不动，可随时增减服务范围或退出'],
+    ],
+    widths=[0.95, 2.75, 2.75])
+bullet('对 CRO 的意义（关键）：', '这三家全球最大的服务商，都主动选择不做数据库、只做数据库之上的一层。原因不是能力不足，而是数据库位已被 Argus / Veeva / IQVIA 以验证成本和数据模型锁定，硬碰不划算。这恰好说明：CRO 若自建，不应瞄准"替代 Argus"，而应做"轻量数据库 + 自动化 + 代运营"的组合，去接他们不愿下沉的中小 MAH 客群。')
+conclusion('服务托管型证明"在别人数据库上做自动化与服务"是可持续生意；但对中小 MAH 而言，他们仍缺一个买得起、用得动的数据库——这是留给 CRO 的真实空位。')
 
 # ================= 三、结论与建议 =================
 h1('三、结论与建议')
