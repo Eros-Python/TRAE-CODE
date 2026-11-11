@@ -407,9 +407,9 @@ forms = [
     ('① 只有库', '卖软件，不接运营', 'Veeva · Oracle Argus\nArisGlobal · 百奥知',
      '交付验证包与实施；客户自建团队，或另找服务商代运营', False),
     ('② 库 + 服务', '既卖系统，也接病例处理', 'IQVIA · 泰格 ClinFlash Safety\n太美 eSafety（太美智研）',
-     'IQVIA 3,000+ 安全专员；泰格 PV 团队 190+ 人；太美以智研承接服务', False),
+     'IQVIA 3,000+ 安全专员；泰格 PV 团队 190+ 人；太美以智研承接服务', True),
     ('③ 没有库', '只做托管与插件', 'Genpact · Accenture · TCS',
-     '数据仍在客户的库里；它们提供自动化插件 + 人力代运营', True),
+     '数据仍在客户的库里；它们提供自动化插件 + 人力代运营', False),
 ]
 for i, (lab, ttl, vend, note, hi) in enumerate(forms):
     x = card_x[i]
