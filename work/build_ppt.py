@@ -397,37 +397,31 @@ rows = [
     ['切换成本', '高：数据 + 流程双锁定，换系统≈重建', '低：数据库不动，可随时增减或退出'],
 ]
 make_table(s, 0.42, 3.42, 12.49, [1.30, 5.60, 5.59], rows, row_h=0.40, header_h=0.30, body_size=8.5)
-callout(s, '三家都避开"数据库"位，只做库之上的自动化与服务；双持者仅 IQVIA 与泰格（本土），空位在中小客群。')
+callout(s, '三家只做库之上的自动化与服务，本身不拥有数据库；既有库又有服务的是 IQVIA、泰格、太美（太美智研）。')
 
 # ---------- 14 双维定位矩阵 ----------
-s = content_slide('竞品格局 · 05', '四家形态定位：自有数据库 × 代运营，双持者只有 IQVIA 与泰格', 14)
-tb(s, 0.42, 2.00, 7.6, 0.24, [[('纵轴：是否自有安全数据库（system of record）　｜　横轴：是否提供人力代运营（BPO）', 8.5, False, GRAY)]], line_spacing=1.0)
-cell_x = [0.95, 4.58]; cell_y = [2.40, 4.30]; cw2, ch2 = 3.35, 1.72
-cells = [
-    (0, 0, '有库 · 无服务', 'Veeva · Oracle Argus\nArisGlobal · RxLogix\n百奥知 · 太美', '卖系统与验证包，不碰运营', False),
-    (1, 0, '有库 · 有服务', 'IQVIA\n泰格 ClinFlash Safety', '双持：自有库 + 自有 PV 团队（泰格 190+ 人）', True),
-    (0, 1, '无库 · 无服务', '（空白象限）', '不具备 PV 供给能力，无实质玩家', False),
-    (1, 1, '无库 · 有服务', 'Genpact · Accenture · TCS', '在客户的库上做自动化与代运营', False),
+s = content_slide('竞品格局 · 05', '三类 PV 供给形态：谁有数据库，谁只有人', 14)
+tb(s, 0.42, 2.02, 12.2, 0.26, [[('Genpact · Accenture · TCS 均无自有 PV 数据库，只提供托管运营与插件式自动化', 9.5, False, GRAY)]])
+card_x = [0.42, 4.69, 8.96]; cw3, cy3, ch3 = 3.95, 2.52, 3.34
+forms = [
+    ('① 只有库', '卖软件，不接运营', 'Veeva · Oracle Argus\nArisGlobal · 百奥知',
+     '交付验证包与实施；客户自建团队，或另找服务商代运营', False),
+    ('② 库 + 服务', '既卖系统，也接病例处理', 'IQVIA · 泰格 ClinFlash Safety\n太美 eSafety（太美智研）',
+     'IQVIA 3,000+ 安全专员；泰格 PV 团队 190+ 人；太美以智研承接服务', False),
+    ('③ 没有库', '只做托管与插件', 'Genpact · Accenture · TCS',
+     '数据仍在客户的库里；它们提供自动化插件 + 人力代运营', True),
 ]
-for ci, cj, head, vend, note, hi in cells:
-    cx, cy = cell_x[ci], cell_y[cj]
-    rect(s, cx, cy, cw2, ch2, CREAM if hi else WHITE,
+for i, (lab, ttl, vend, note, hi) in enumerate(forms):
+    x = card_x[i]
+    rect(s, x, cy3, cw3, ch3, CREAM if hi else WHITE,
          line_color=ACCENT if hi else LINEC, line_w=1.6 if hi else 0.75)
-    tb(s, cx+0.16, cy+0.13, cw2-0.3, 0.24, [[(head, 9.5, True, ACCENT if hi else GRAY)]])
-    vp = [[(ln, 10.5 if hi else 9, True, NAVY)] for ln in vend.split('\n')]
-    tb(s, cx+0.16, cy+0.45, cw2-0.3, 0.52, vp, space_after=1, line_spacing=1.06)
-    tb(s, cx+0.16, cy+ch2-0.66, cw2-0.3, 0.50, [[(note, 8.5, False, BODY)]], line_spacing=1.08)
-
-rect(s, 8.13, 2.40, 0.05, 3.02, ACCENT)
-tb(s, 8.38, 2.42, 4.4, 0.28, [[('五点关键澄清', 11, True, NAVY)]])
-bullets(s, 8.36, 2.80, 4.42, 2.80, [
-    ('IQVIA 有库：', 'Vigilance Case 官方定位为"single-source-of-truth case processing, assessment and submissions"，Administration 管 PLS 与用户权限'),
-    ('但可拆可合：', 'Detect / Collect 为 system agnostic，可挂客户既有 Argus——能卖整库，也能只卖模块或只卖人'),
-    ('数据所有权 ≠ 存储位置：', '"客户数据自有"指可导出、可收回，不等于数据不在厂商系统内'),
-    ('替换还是叠加：', 'Veeva / Argus / 泰格 ClinFlash / IQVIA 同抢"库"位；Genpact / Accenture / TCS 只做库之上的层，是叠加而非替代'),
-    ('泰格＝本土版 IQVIA：', 'ClinFlash Safety 为自研安全数据库（支持 E2B R3 / Gateway），叠加 190+ 人 PV 团队——本土"库+服务"双持'),
-], size=8.4, gap=6)
-callout(s, 'IQVIA 的 14.8% 中国市占来自"不挑客户系统现状"；CRO 若自建，真正对标的是它不愿下沉的价格带，而非它本身。')
+    tb(s, x + 0.2, cy3 + 0.15, cw3 - 0.4, 0.24, [[(lab, 9, True, ACCENT if hi else GRAY)]])
+    tb(s, x + 0.2, cy3 + 0.44, cw3 - 0.4, 0.34, [[(ttl, 12.5, True, NAVY)]])
+    rect(s, x + 0.2, cy3 + 0.88, 0.55, 0.03, ACCENT if hi else LINEC)
+    vp = [[(ln, 9.5, True, NAVY)] for ln in vend.split('\n')]
+    tb(s, x + 0.2, cy3 + 1.06, cw3 - 0.4, 0.70, vp, space_after=3, line_spacing=1.12)
+    tb(s, x + 0.2, cy3 + 2.34, cw3 - 0.4, 0.85, [[(note, 9, False, BODY)]], line_spacing=1.18)
+callout(s, '关键差别：前两类卖"系统的归属"，第三类卖"人手与效率"——不拥有数据库，因此不构成对数据库厂商的替代。')
 
 # ---------- 15 聚拢逻辑 ----------
 s = content_slide('结论与建议 · 02', '为什么 PV 系统市场在聚拢：四股力量', 15)
