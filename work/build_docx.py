@@ -194,6 +194,7 @@ add_table(
         ['切换成本', '高：数据 + 流程双锁定，换系统近乎重建', '低：数据库不动，可随时增减服务范围或退出'],
     ],
     widths=[0.95, 2.75, 2.75])
+bullet('注意：IQVIA 不在此列（常见误判）：', 'IQVIA Vigilance Platform 官网明确定位为"a drug safety system"，其 Vigilance Case 模块提供"single-source-of-truth case processing, assessment and submissions"，Vigilance Administration 提供 PLS 配置与用户安全管理——即具备完整的 system of record 能力，Biovac 案例亦是从纸质系统迁移到该平台。因此 IQVIA 属"平台厂商"侧，且同时拥有 3,000+ 安全专员的 BPO，是四家中唯一"自有库 + 代运营"双持者。补充：其 Vigilance Detect / Collect 为 system agnostic 模块，可挂接客户既有数据库，故 IQVIA 既能卖整库、也能只卖模块或只卖人力。')
 bullet('对 CRO 的意义（关键）：', '这三家全球最大的服务商，都主动选择不做数据库、只做数据库之上的一层。原因不是能力不足，而是数据库位已被 Argus / Veeva / IQVIA 以验证成本和数据模型锁定，硬碰不划算。这恰好说明：CRO 若自建，不应瞄准"替代 Argus"，而应做"轻量数据库 + 自动化 + 代运营"的组合，去接他们不愿下沉的中小 MAH 客群。')
 conclusion('服务托管型证明"在别人数据库上做自动化与服务"是可持续生意；但对中小 MAH 而言，他们仍缺一个买得起、用得动的数据库——这是留给 CRO 的真实空位。')
 
@@ -227,6 +228,7 @@ bullet('', '中国市场：博研咨询《2026 年中国药物警戒（PV）和�
 bullet('', 'MAH 与企业数：博研咨询引药智网/NMPA（2025 年底）；NMPA《药品监督管理统计年度数据（2025 年）》；中国药科大学学报 B 证研究（药智网，2025-03）；医药魔方（2025）；弗若斯特沙利文；Biotechgate。')
 bullet('', '临床与获批：CDE《中国新药注册临床试验进展年度报告》（2024/2025）；NMPA 年度统计（2025）。')
 bullet('', '竞品：Veeva 官网 Product Sheet / Customers 页（2026-04）；IQVIA 官网平台页（©2025）与 Fact Sheet（©2026）；IQVIA《Sanofi Revolutionizes Pharmacovigilance with Project ARTEMIS》（2025-06）；太美、百奥知官网（2026）；BioAI Agents Directory（2026-11 抓取）。')
+bullet('', 'IQVIA Vigilance Platform 产品定位：https://www.iqvia.com/solutions/safety-regulatory-compliance/safety-and-pharmacovigilance/iqvia-vigilance-platform ；Vigilance Collect（E2B+ 写入 safety database）：https://www.iqvia.com/solutions/safety-regulatory-compliance/safety-and-pharmacovigilance/iqvia-vigilance-platform/iqvia-vigilance-collect ；Biovac 案例：https://www.iqvia.com/library/case-studies/biovacs-drive-for-innovation-partnering-with-iqvia-to-advance-healthcare')
 bullet('', '服务托管型案例：Genpact×Bayer（2018-11，media.genpact.com）；Genpact 收购 Commonwealth Informatics / CVW（2018-06，media.genpact.com）；Accenture×UCB / INTIENT Pharmacovigilance（2019-12，newsroom.accenture.com）；TCS×AstraZeneca 案例研究（tcs.com）；TCS×罗氏中国 PV testimonial（tcs.com）；TCS ADD Safety 产品页（tcs.com）。注：Genpact 早期 PVAI 产品页 genpact.com/cora/pharmacovigilance-pvai 现已 404，案例主要存档于 media.genpact.com 新闻稿库。')
 bullet('', '政策：GVP（国家药监局 2021 年第 65 号公告）；2026 年新《药品管理法实施条例》。')
 

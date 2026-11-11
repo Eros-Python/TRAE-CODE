@@ -292,7 +292,7 @@ for ph in s.placeholders:
 s = content_slide('竞品格局 · 01', '四家 PV 系统横向对照：平台派 vs 国产派', 8)
 rows = [
     ['维度', 'Veeva Safety Suite', 'IQVIA Vigilance Platform', '太美 eSafety', '百奥知 Bioknow PV'],
-    ['定位', 'Vault 云平台上的一体化 PV 应用组合', '模块化 SaaS：AI 为核心、客户数据自有', '国产 GVP 一体化 PV 数据库 + iPV 智能体', '国产"PV 数据中心"：eSAE+eADR+PV+Gateway'],
+    ['定位', 'Vault 云平台上的一体化 PV 应用组合', '自有安全数据库 + 模块化 SaaS（数据归客户）', '国产 GVP 一体化 PV 数据库 + iPV 智能体', '国产"PV 数据中心"：eSAE+eADR+PV+Gateway'],
     ['组成', '5 应用：Safety / SafetyDocs / Workbench / Signal / AI', '8 模块：Intake / Case / Periodics / Analytics / Detect 等', 'eSafety + iPV Agent + 全球递交 Gateway', 'Bioknow PV + eSAE + eADR + 一体化门户 + Gateway'],
     ['AI 能力', 'AI for Safety 2025 上线，早期（1–10 客户）', 'AI at core，目标近"touchless"病例处理', 'iPV：自述重复任务自动化 80%、合规率 99.9%', '2026 起密集发布信号检测 / 文献 AI / Narrative 秒级生成'],
     ['客户证据', '8 家 Top 20 药企；18 家具名客户', '30+ 平台客户、20 家 Top 50；Sanofi / Biovac', '自述 500 家申办方/CRO；具名 1 家（豪森）', '自述 300+/400+ 家；无具名客户'],
@@ -397,7 +397,7 @@ rows = [
     ['切换成本', '高：数据 + 流程双锁定，换系统≈重建', '低：数据库不动，可随时增减或退出'],
 ]
 make_table(s, 0.42, 3.42, 12.49, [1.30, 5.60, 5.59], rows, row_h=0.40, header_h=0.30, body_size=8.5)
-callout(s, '三家都主动避开"数据库"位，只吃数据库之上的自动化与服务——这正是留给第三方（含 CRO）的结构性空位。')
+callout(s, '三家都避开"数据库"位，只做库之上的自动化与服务；对照 IQVIA（自有库 + 3,000 人 BPO）是唯一"库+服务"双持者——空位在中小客群。')
 
 # ---------- 14 聚拢逻辑 ----------
 s = content_slide('结论与建议 · 02', '为什么 PV 系统市场在聚拢：四股力量', 14)
