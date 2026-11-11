@@ -163,11 +163,17 @@ add_table(
         ['全球平台一线', 'Veeva · IQVIA · Oracle Argus · ArisGlobal', '完整工作流+数据库+申报一体化，多年期验证锁定 Top 20 药企', 'Veeva 8 家 Top20；IQVIA 20 家 Top50；ArisGlobal 220+ 客户，达索 18 亿美元收购（2026-07 签约）'],
         ['全球利基', 'RxLogix · Ennov · EXTEDO · AB Cube', '模块化 API 挂接遗留系统，区域/单点突破', 'RxLogix 105+ 客户、年千万级病例（自述）；Ennov 650+ 组织'],
         ['AI 原生新势力', 'Graph Safety 等', '知识图谱 + 可解释 AI，云原生按模块交付', '融资 $16.3M；自述 3 小时→10 分钟（未经审计）'],
-        ['服务托管型', 'Genpact · Accenture · TCS', '技术实施 + 托管服务捆绑，离岸人力压价', 'Genpact 14.6 万员工；Bayer、MHRA 案例'],
+        ['服务托管型', 'Genpact · Accenture · TCS', '自有 PV 平台 + 代运营捆绑，以人力规模压成本', 'Bayer（2018）｜UCB（2019）｜AstraZeneca（7 区域中心 / 130+ 国家）'],
         ['中国第一梯队', '太美 eSafety · 百奥知 · 洞悉 Holox · Clinflash', 'GVP 合规 + 国产替代 + 中文场景深耕', '太美自述 500 家客户（港股上市 02576.HK）；百奥知自述 300+ 家'],
         ['中国轻量化', 'PVwatch（南京天韬）· iDrugSafety（梅斯）', '轻量 SaaS、用户体验与性价比取胜', '面向国内中小 MAH，区域化服务'],
     ],
     widths=[0.95, 1.7, 2.2, 2.15])
+para([('服务托管型补充说明（含出处）：', True, NAVY)], space_after=4)
+bullet('Genpact：', '2018-11 与 Bayer 签多年期协议，PVAI 套件接入 Bayer 现有 PV 数据库与 IT 系统，Bayer 为 AI Case Management 模块首批上线客户（early adopter）。原文：https://media.genpact.com/2018-11-01-Genpact-and-Bayer-to-Co-innovate-to-Leverage-Artificial-Intelligence-Capabilities-for-Patient-Safety ｜同稿 PR Newswire：https://www.prnewswire.com/news-releases/genpact-and-bayer-to-co-innovate-to-leverage-artificial-intelligence-capabilities-for-patient-safety-300741980.html')
+bullet('Genpact 与 MHRA 的关系（更正）：', 'MHRA 不是 Genpact 的 PV 实施客户。Genpact 2018-06 收购 Commonwealth Informatics，其产品 CVW（Commonwealth Vigilance Workbench）被 FDA、MHRA 等监管机构使用——属"被收购产品的用户"，与"PV 系统实施项目"性质不同，不应并入案例证据。原文：https://media.genpact.com/2018-06-11-Genpact-Accelerates-Strategy-to-Establish-New-Industry-Standard-for-Pharmacovigilance-Using-AI-and-Machine-Learning-Technologies')
+bullet('Accenture：', '2019-12-16 与 UCB 合作，UCB 上线 INTIENT™ Pharmacovigilance；由 Accenture 运营团队代管病例处理、平台提供 AI 增强——是"平台 + 代运营"模式的直接样本。原文：https://newsroom.accenture.com/news/ucb-and-accenture-collaborate-to-accelerate-data-processing-and-help-improve-patient-safety.htm ｜服务介绍 PDF：https://www.accenture.com/content/dam/accenture/final/a-com-migration/pdf/pdf-105/accenture-pharmacovigilance-services2.pdf')
+bullet('TCS：', 'AstraZeneca 案例——整合 7 个区域中心的患者安全与法规流程，覆盖 70+ 已上市产品、100+ 在研产品、130+ 国家，投入 500+ 药师/医师；其 AE 病例处理经 FDA、MHRA、瑞典药监检查无重大缺陷。原文：https://www.tcs.com/what-we-do/industries/life-sciences/case-study/astrazeneca-enhance-patient-safety-regulatory-services ；另有罗氏中国 PV testimonial：https://www.tcs.com/cn-zh/what-we-do/services/cognitive-business-operations/video/roche-china-pharmacovigilance-testimonial')
+bullet('分类提示：', 'Accenture（INTIENT Pharmacovigilance）与 TCS（TCS ADD™ Safety）均已有自有 PV 平台，并非纯人力外包——"服务托管型"与"平台型"的第一梯队边界正在模糊，这也是市场向平台+服务一体聚拢的又一佐证。TCS ADD Safety：https://www.tcs.com/what-we-do/products-platforms/tcs-add/solution/tcs-add-safety-solution')
 conclusion('全球拼"平台锁定"，中国拼"国产替代 + 轻量化"；AI 原生厂商是共同变量——梯队边界正在重排。')
 
 # ================= 三、结论与建议 =================
@@ -200,6 +206,7 @@ bullet('', '中国市场：博研咨询《2026 年中国药物警戒（PV）和�
 bullet('', 'MAH 与企业数：博研咨询引药智网/NMPA（2025 年底）；NMPA《药品监督管理统计年度数据（2025 年）》；中国药科大学学报 B 证研究（药智网，2025-03）；医药魔方（2025）；弗若斯特沙利文；Biotechgate。')
 bullet('', '临床与获批：CDE《中国新药注册临床试验进展年度报告》（2024/2025）；NMPA 年度统计（2025）。')
 bullet('', '竞品：Veeva 官网 Product Sheet / Customers 页（2026-04）；IQVIA 官网平台页（©2025）与 Fact Sheet（©2026）；IQVIA《Sanofi Revolutionizes Pharmacovigilance with Project ARTEMIS》（2025-06）；太美、百奥知官网（2026）；BioAI Agents Directory（2026-11 抓取）。')
+bullet('', '服务托管型案例：Genpact×Bayer（2018-11，media.genpact.com）；Genpact 收购 Commonwealth Informatics / CVW（2018-06，media.genpact.com）；Accenture×UCB / INTIENT Pharmacovigilance（2019-12，newsroom.accenture.com）；TCS×AstraZeneca 案例研究（tcs.com）；TCS×罗氏中国 PV testimonial（tcs.com）；TCS ADD Safety 产品页（tcs.com）。注：Genpact 早期 PVAI 产品页 genpact.com/cora/pharmacovigilance-pvai 现已 404，案例主要存档于 media.genpact.com 新闻稿库。')
 bullet('', '政策：GVP（国家药监局 2021 年第 65 号公告）；2026 年新《药品管理法实施条例》。')
 
 doc.save('/workspace/PV数据库市场调研总结-文字稿-20261111.docx')

@@ -361,7 +361,7 @@ rows = [
     ['全球平台一线', 'Veeva · IQVIA · Oracle Argus · ArisGlobal', '完整工作流+数据库+申报一体化，多年期验证锁定 Top 20 药企', 'Veeva 8 家 Top20；IQVIA 20 家 Top50；ArisGlobal 220+ 客户，达索 18 亿美元收购（2026-07 签约）'],
     ['全球利基', 'RxLogix · Ennov · EXTEDO · AB Cube', '模块化 API 挂接遗留系统，区域/单点突破', 'RxLogix 105+ 客户、年千万级病例（自述）；Ennov 650+ 组织'],
     ['AI 原生新势力', 'Graph Safety 等', '知识图谱 + 可解释 AI，云原生按模块交付', '融资 $16.3M；自述 3 小时→10 分钟（未经审计）'],
-    ['服务托管型', 'Genpact · Accenture · TCS', '技术实施 + 托管服务捆绑，离岸人力压价', 'Genpact 14.6 万员工；Bayer、MHRA 案例'],
+    ['服务托管型', 'Genpact · Accenture · TCS', '自有 PV 平台 + 代运营捆绑，以人力规模压成本', 'Bayer（2018）｜UCB（2019）｜AstraZeneca（7 区域中心 / 130+ 国家）'],
     ['中国第一梯队', '太美 eSafety · 百奥知 · 洞悉 Holox · Clinflash', 'GVP 合规 + 国产替代 + 中文场景深耕', '太美自述 500 家客户（港股上市）；百奥知自述 300+ 家'],
     ['中国轻量化', 'PVwatch（南京天韬）· iDrugSafety（梅斯）', '轻量 SaaS、用户体验与性价比取胜', '面向国内中小 MAH，区域化服务'],
 ]
