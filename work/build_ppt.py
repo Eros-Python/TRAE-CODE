@@ -162,7 +162,7 @@ for sldId in list(xml_slides):
     prs.part.drop_rel(rId)
     xml_slides.remove(sldId)
 
-TOTAL = 16
+TOTAL = 17
 
 def content_slide(eyebrow_text, title_text, page):
     s = prs.slides.add_slide(layouts['正文1'])
@@ -188,7 +188,7 @@ tb(s, 3.34, 5.38, 9.9, 0.35, [[('2026 年 11 月 ｜ 依据《PV 数据库市场
 s = prs.slides.add_slide(layouts['目录'])
 toc_items = [
     ('01', '市场规模与数据', '全球与中国规模 · 中国 MAH 刚需客群测算 · 自动化市场与集中度'),
-    ('02', '竞品格局', '四家横向对照 · Veeva / IQVIA 单页结论 · 软件梯队 · 服务商实施差异'),
+    ('02', '竞品格局', '四家横向对照 · Veeva / IQVIA 单页结论 · 软件梯队 · 实施差异与双维定位'),
     ('03', '结论与建议', '市场聚拢的底层逻辑 · 临床 CRO 是否自建 PV 数据库'),
 ]
 for ph in list(s.placeholders):
@@ -399,8 +399,37 @@ rows = [
 make_table(s, 0.42, 3.42, 12.49, [1.30, 5.60, 5.59], rows, row_h=0.40, header_h=0.30, body_size=8.5)
 callout(s, '三家都避开"数据库"位，只做库之上的自动化与服务；对照 IQVIA（自有库 + 3,000 人 BPO）是唯一"库+服务"双持者——空位在中小客群。')
 
-# ---------- 14 聚拢逻辑 ----------
-s = content_slide('结论与建议 · 02', '为什么 PV 系统市场在聚拢：四股力量', 14)
+# ---------- 14 双维定位矩阵 ----------
+s = content_slide('竞品格局 · 05', '四家形态定位：自有数据库 × 代运营，IQVIA 是唯一的双持者', 14)
+tb(s, 0.42, 2.00, 7.6, 0.24, [[('纵轴：是否自有安全数据库（system of record）　｜　横轴：是否提供人力代运营（BPO）', 8.5, False, GRAY)]], line_spacing=1.0)
+cell_x = [0.95, 4.58]; cell_y = [2.40, 4.30]; cw2, ch2 = 3.35, 1.72
+cells = [
+    (0, 0, '有库 · 无服务', 'Veeva · Oracle Argus\nArisGlobal · RxLogix', '卖系统与验证包，不碰运营', False),
+    (1, 0, '有库 · 有服务', 'IQVIA', '唯一双持：Vigilance 安全数据库 + 3,000 人 BPO', True),
+    (0, 1, '无库 · 无服务', '（空白象限）', '不具备 PV 供给能力，无实质玩家', False),
+    (1, 1, '无库 · 有服务', 'Genpact · Accenture · TCS', '在客户的库上做自动化与代运营', False),
+]
+for ci, cj, head, vend, note, hi in cells:
+    cx, cy = cell_x[ci], cell_y[cj]
+    rect(s, cx, cy, cw2, ch2, CREAM if hi else WHITE,
+         line_color=ACCENT if hi else LINEC, line_w=1.6 if hi else 0.75)
+    tb(s, cx+0.16, cy+0.13, cw2-0.3, 0.24, [[(head, 9.5, True, ACCENT if hi else GRAY)]])
+    vp = [[(ln, 11.5 if hi else 9.5, True, NAVY)] for ln in vend.split('\n')]
+    tb(s, cx+0.16, cy+0.45, cw2-0.3, 0.52, vp, space_after=1, line_spacing=1.06)
+    tb(s, cx+0.16, cy+ch2-0.66, cw2-0.3, 0.50, [[(note, 8.5, False, BODY)]], line_spacing=1.08)
+
+rect(s, 8.13, 2.40, 0.05, 2.78, ACCENT)
+tb(s, 8.38, 2.42, 4.4, 0.28, [[('四点关键澄清', 11, True, NAVY)]])
+bullets(s, 8.36, 2.80, 4.42, 2.80, [
+    ('IQVIA 有库：', 'Vigilance Case 官方定位为"single-source-of-truth case processing, assessment and submissions"，Administration 管 PLS 与用户权限'),
+    ('但可拆可合：', 'Detect / Collect 为 system agnostic，可挂客户既有 Argus——能卖整库，也能只卖模块或只卖人'),
+    ('数据所有权 ≠ 存储位置：', '"客户数据自有"指可导出、可收回，不等于数据不在厂商系统内'),
+    ('替换还是叠加：', 'Veeva / Argus 与 IQVIA 是正面替代（同抢"库"位）；Genpact / Accenture / TCS 与它们是叠加关系，不构成替代'),
+], size=8.8, gap=8)
+callout(s, 'IQVIA 的 14.8% 中国市占来自"不挑客户系统现状"；CRO 若自建，真正对标的是它不愿下沉的价格带，而非它本身。')
+
+# ---------- 15 聚拢逻辑 ----------
+s = content_slide('结论与建议 · 02', '为什么 PV 系统市场在聚拢：四股力量', 15)
 quad = [
     ('① 监管刚性收敛', 'GVP 强制电子化 + 2024–25 飞检密集 + 2026 新条例压实 MAH 责任：合规预算只流向"经过验证"的系统，信任即壁垒'),
     ('② 数据网络效应', '信号检测价值随数据量增长；IQVIA OneKey 与 Veeva 的 MDM 十年诉讼本质是数据资产之争，2025-08 以和解+互通收场'),
@@ -417,7 +446,7 @@ for i, (h, b) in enumerate(quad):
 callout(s, '聚拢本质 = 合规信任 + 数据资产 + AI 规模经济三重壁垒成形；中等集中度下，中小 MAH 与中国本地化仍有结构性空档。')
 
 # ---------- 14 CRO 决策 ----------
-s = content_slide('结论与建议 · 03', '临床 CRO 要不要自建 PV 数据库？——要：轻量做、从痛点做', 15)
+s = content_slide('结论与建议 · 03', '临床 CRO 要不要自建 PV 数据库？——要：轻量做、从痛点做', 16)
 section_header(s, 0.42, 2.02, 7.35, '为什么要做（四个理由）')
 bullets(s, 0.42, 2.46, 7.35, 3.8, [
     ('客户刚需外溢：', '3,000+ 家刚需 MAH 中，中小 MAH / Biotech 买不起也用不动 Veeva / Argus——他们要"系统 + 代运营"一起买'),
