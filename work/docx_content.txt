@@ -1,0 +1,474 @@
+[P:Normal] 药物警戒（PV）数据库市场调研
+[P:Normal] 市场数据 · 竞品分析
+[P:Normal] 2026 年 11 月
+[P:Normal] 缩略语表
+=== TABLE 0 (48 rows x 4 cols) ===
+缩略语 | 英文全称 | 中文含义 | 文中说明
+行业与监管 | 行业与监管 | 行业与监管 | 行业与监管
+PV | Pharmacovigilance | 药物警戒 | 全文核心概念：药品全生命周期安全监测与风险管理
+GVP | Good Pharmacovigilance Practice | 药物警戒质量管理规范 | 2021 年版法规，强制 MAH 建立电子记录系统
+MAH | Marketing Authorization Holder | 药品上市许可持有人 | 核心客户群与合规责任主体
+NMPA | National Medical Products Administration | 国家药品监督管理局 | 国内 PV 监管机构
+ADR | Adverse Drug Reaction | 药品不良反应 | ADR 监测、信号上报与省级 ADR 中心
+ICSR | Individual Case Safety Report | 个例安全性报告 | ICSR 数据库与病例处理
+E2B(R3) | Electronic Transmission of Individual Case Safety Reports, R | 个例安全性报告电子传输标准（第 3 版） | E2B 批量病例自动翻译与合规校验
+MedDRA | Medical Dictionary for Regulatory Activities | 国际监管活动医学词典 | 病例编码与字典自动映射
+WHODrug | WHO Drug Dictionary | WHO 药物字典 | 药品编码与字典自动映射
+EDQM | European Directorate for the Quality of Medicines & HealthCa | 欧洲药品质量管理局 | 编码字典半年更新
+PSMF | Pharmacovigilance System Master File | 药物警戒体系主文件 | Veeva SafetyDocs 管理内容
+PVA | Pharmacovigilance Agreement | 药物警戒协议 | Veeva SafetyDocs 管理内容
+RMP | Risk Management Plan | 风险管理计划 | Veeva SafetyDocs 管理内容
+aRMM | additional Risk Minimization Measures | 额外风险最小化措施 | Veeva SafetyDocs 管理内容
+FAERS | FDA Adverse Event Reporting System | 美国 FDA 不良事件报告系统 | Veeva Safety Signal 内置数据源
+VAERS | Vaccine Adverse Event Reporting System | 美国疫苗不良事件报告系统 | Veeva Safety Signal 内置数据源
+EVDAS | EudraVigilance Data Analysis System | 欧盟 EudraVigilance 数据分析系统 | Veeva Safety Signal 内置数据源
+FDA | U.S. Food and Drug Administration | 美国食品药品监督管理局 | 监管提交与 AI 合规指南
+EMA | European Medicines Agency | 欧洲药品管理局 | 监管提交与 AI 合规指南
+MHRA | Medicines and Healthcare products Regulatory Agency | 英国药品和健康产品管理局 | E2B 网关对接机构
+ICH | International Council for Harmonisation | 国际人用药品注册技术协调会 | ICH 标准遵循
+DE | —（原文未给出全称） | 药物警戒专员 | 客户访谈建议对象
+PEM | Prescription Event Monitoring | 处方事件监测 | 处方事件监测（PEM）库
+RWD | Real World Data | 真实世界数据 | PV 数据库与 HIS / EMR / 医保数据联动
+市场与商业 | 市场与商业 | 市场与商业 | 市场与商业
+TAM | Total Addressable Market | 总可寻址市场（整体潜在市场） | 模块 1：市场规模与增长空间
+SAM | Serviceable Available Market | 可服务市场 | 模块 1：市场规模与增长空间
+SOM | Serviceable Obtainable Market | 可获得市场 | 模块 1：市场规模与增长空间
+CAGR | Compound Annual Growth Rate | 复合年增长率 | 全球及中国市场规模增速
+SaaS | Software as a Service | 软件即服务 | 云原生与中型 MAH 轻量化部署
+CRO | Contract Research Organization | 合同研究组织 | 客户群与竞品类型
+CDMO | Contract Development and Manufacturing Organization | 合同开发与生产组织 | 客户分层与竞品筛选条件
+SMB | Small and Medium-sized Business | 中小企业 | 匿名案例中的 SMB Biotech
+技术与数据 | 技术与数据 | 技术与数据 | 技术与数据
+AI | Artificial Intelligence | 人工智能 | 病例处理自动化与信号检测
+NLP | Natural Language Processing | 自然语言处理 | ICSR 病例录入自动提取
+LLM | Large Language Model | 大语言模型 | LLM 辅助信号检测
+GenAI | Generative Artificial Intelligence | 生成式人工智能 | GenAI 白皮书与人在环要求
+... (8 more rows)
+[P:常用样式] 一）框架
+[P:Heading 2] 模块 1：市场规模与增长空间（TAM / SAM / SOM）
+=== TABLE 1 (4 rows x 2 cols) ===
+要回答的问题 | 信息源
+全球和中国 PV 数据库/软件市场的当前规模和 5 年 CAGR？ | Dataintelo、Mordor Intelligence、国内博研/赛迪
+数据库子赛道（而非完整 PV 工作流平台）占多大比例？ | 拆分子段：ICSR 数据库、信号检测库、文献监测库、处方事件监测 PEM 库
+增量来自哪里？新建 MAH 首次建库 / 存量替换 / AI 功能升级 | NMPA MAH 持证数、GVP 合规检查数据，真正对PV数据库有刚需的企业数目有多少。
+[P:Heading 2] 模块 2：客户分层与需求差异
+=== TABLE 2 (7 rows x 3 cols) ===
+客户群 | 核心需求 | 付费意愿
+大型跨国药企（Top 20） | 全球多区域合规、与 Oracle/IQVIA 系统对接 | 高，但已有 incumbent 锁定
+国内头部药企（恒瑞、百济等） | 国产替代、中文 ADR 信号挖掘、真实世界数据联动 | 中高
+中型 MAH（约 500-1000 家） | 低成本合规建库、SaaS 化、开箱即用 | 中，是核心增量
+Biotech/创新药公司 | 早期临床→上市后衔接、轻量部署 | 中，但预算有限
+CRO/CDMO | 为客户代管 PV 数据库、多租户 | 中高
+监管机构/省级 ADR 中心 | 区域聚集、信号上报 | 低/项目制
+[P:Heading 2] 模块 3：竞争格局——谁在做、怎么做
+=== TABLE 3 (7 rows x 3 cols) ===
+梯队 | 代表厂商 | 关键情报
+第一梯队（全球） | Oracle Argus、ArisGlobal LifeSphere、Veeva Vault Safety、IQVIA  | 占据 Top 20 药企，特点是完整工作流+数据库+合规申报一体化，客单价百万美元级 / Meditata和Arisgl
+Veeva Safety作为一个全面、全球化且经过验证的一体化解决方案，已成为全球Top 20制药企业中8家的选择，核心 | Veeva Safety作为一个全面、全球化且经过验证的一体化解决方案，已成为全球Top 20制药企业中8家的选择，核心 | Veeva Safety作为一个全面、全球化且经过验证的一体化解决方案，已成为全球Top 20制药企业中8家的选择，核心
+其他（全球） | RxLogix、EXTEDO、AB Cube、Genpact、Graph Safety、Ennov | 
+ |  | 
+第一梯队（中国） | 太美PV系统，太美医疗临床-PV一体化临床管线丰富的药企 / 百奥知PV系统，本土化, 服务灵活国内中小企业 / 洞悉H | 
+其他（中国） | PVwatch南京天韬轻量化, 用户体验国内中小企业 / iDrugSafety梅斯医学学术背景, 数字化生态注重学术与 | 
+[P:Heading 2] 模块 4：政策驱动——刚性需求有多大
+[P:List Paragraph] GVP（药物警戒质量管理规范）2021 版已强制要求 MAH 建立电子记录系统（数据库），2024-2025 年进入飞行检查密集期
+[P:List Paragraph] MAH 持证企业约 5,800+ 家，已建系统约 85%，但真正符合 GVP 数据质量要求的不一定有这么多
+=== TABLE 4 (6 rows x 5 cols) ===
+指标 | 企业主体数（家） | 统计时点 | 直接出处 | 原始数据来源
+纯B证持有人（仅持B证，轻资产MAH） | 1,252 | 2025年3月4日 | 中国药科大学学报2025年论文《MAH制度下中国药品生产企业B证持有人发展现状分析及建议》（刘东旭等） | 药智网数据库
+纯B证持有人（补充交叉验证） | 1,127 | 2024年4月 | 36氪/BT财经2025年文章《药厂血拼价格战》引用药智网 | 药智网数据库
+纯B证持有人（补充交叉验证） | 1,272 | 2025年2月28日 | 天眼查/药说数据《新增23家！全国B证数量1272家》引用药监局 | NMPA + 各省药监局
+持B证的许可证张数（含A+B证） | 2,470 | 2025年3月4日 | 中国药科大学学报2025年论文（同上） | 药智网数据库
+MAH持有人总数（A+B+纯B，不含C/D） | 5,832 | 2025年底 | 博研咨询《2026年中国药物安全和药物警戒软件行业报告》 | 药智网 / NMPA数据库
+[P:List Paragraph] 华经产业研究院根据国家统计局数据整理的生物制药子行业规模以上企业数量（行业代码276）：
+=== TABLE 5 (3 rows x 3 cols) ===
+年份 | 规模以上生物制药企业数（家） | 数据来源
+2022 | 突破 1,000 | 华经产业研究院《2024年中国生物制药行业现状分析》
+2023 | 1,148 | 华经产业研究院，引用国家统计局数据，新浪财经2025年8月转载
+[P:Normal] 注：该口径特指医药制造业下的"生物药品制品制造"子行业（行业代码276），即专注于生物药（疫苗、单抗、重组蛋白、血液制品等）的生产企业，不包括化学制药和中药企业。
+[P:List Paragraph] 国际专业数据库Biotechgate和全球知名市场研究机构弗若斯特沙利文（Frost & Sullivan）对中国生物技术企业（Biotech专业企业）有专门统计：
+=== TABLE 6 (4 rows x 3 cols) ===
+年份/时间点 | 企业数量 | 数据来源
+2020年 | Biotech企业约 1,826 家（由2024年底数据及2.3倍增长率反推） | 弗若斯特沙利文报告（推算）
+2024年底 | Biotech企业突破 4,200 家，较2020年增长近2.3倍 | 弗若斯特沙利文（Frost & Sullivan）报告
+2025年上半年 | 生物技术相关公司 5,699 家，其中Biotechnology企业约 2,465 家 | Biotechgate数据库，36氪2026年6月引用
+[P:Normal] 注：Biotechgate的"Biotechnology企业"定义较为严格，排除了部分跨界医药企业，因此其数量（约2,500家）低于弗若斯特沙利文的Biotech企业数量（4,200家）。
+[P:List Paragraph] Biotech数据库（Biotechgate）中的生物技术公司：专注于生物技术领域的企业，多为初创或专业Biotech。
+[P:List Paragraph] 生物制药行业规模以上企业：2023年底为1,148家。考虑到创新药产业年均20%以上的增速目标，生物制药子行业增速有望高于整体医药行业。假设年均增长10%-12%，2030年规模以上生物制药企业有望达到2,200-2,600家。
+[P:List Paragraph] Biotech专业企业：这一领域的预测不确定性最大。弗若斯特沙利文数据显示2020-2024年四年增长2.3倍（CAGR约23%），但2021年后新成立Biotech已出现断崖式减少，行业进入整合期。如果按更可持续的10%-15%年均增速估算，2030年中国Biotech企业数量可能在7,000-10,000家之间。但需警惕行业出清风险，实际数量可能低于此预测，质量提升可能比数量增长更显著。
+[P:List Paragraph] Biotech中治疗开发赛道的企业对PV 数据库软件的需求是刚需，针对该部分企业进行推测。
+=== TABLE 7 (14 rows x 5 cols) ===
+年份 | 活跃 Therapeutics 公司数 | 同比增速 | Biotechgate 收录（参考） | 关键事件
+2018 | ~1,100 | — | ~230 | 药审改革、MAH 制度落地
+2019 | ~1,300 | +18.2% | ~280 | IND 申请高峰
+2020 | ~1,550 | +19.2% | ~320 | 新冠疫苗/检测公司集中成立
+2021 | ~1,750 | +12.9% | ~360 | IPO 高峰：89 家生物医药上市
+2022 | ~1,680 | -4.0% | ~370 | 首次 IND 下滑 8%；融资寒冬启动
+2023 | ~1,720 | +2.4% | ~385 | CAR-T 获批潮带动新注册
+2024 | ~1,820 | +5.8% | ~395 | IPO 跌至 11 家；License-out 逆势增长
+2025 | ~2,000 | +9.9% | ~405 | NMPA 批 76 个 1 类创新药；License-out $1,357 亿
+2026 | ~2,200 | +10.0% | ~414 | 预测基准：IND 复苏 + 下一代疗法新注册
+2027 | 2,387 | +8.5% | 452 | AI 药物发现平台新注册 + 下一代疗法扩展
+2028 | 2,590 | +8.5% | 488 | 3–5 款国产 $1B+ blockbuster 上市
+2029 | 2,810 | +8.5% | 527 | mRNA/LNP 从肿瘤扩展到罕见病
+2030 | 3,049 | +8.5% | 570 | 创新药周期兑现，License-out 持续加速
+[P:List Paragraph] 基准情景：CAGR 8.5%（全行业），低于市场增速 3.1 个百分点.Biotechgate 收录数 CAGR 9.1%，高于全行业（公司数量自然增量 + 国际化加速的双重驱动）。
+[P:List Paragraph] 2026 年新《药品管理法实施条例》进一步压实 MAH 主体责任
+[P:List Paragraph] 2026年《医药工业发展"十五五"规划》未直接给出企业总数目标，而是聚焦"年营收超100亿元企业达50家"等质量指标
+[P:Heading 2] 模块 5：技术趋势与差异化机会
+=== TABLE 8 (4 rows x 2 cols) ===
+方向 | 说明
+AI/NLP /自动化 | ICSR 病例录入自动提取（减少 80% 人工）、MedDRA 自动编码、LLM 辅助信号检测——目前一线产品都在加，但
+真实世界数据（RWD）融合 | PV 数据库+HIS/EMR/医保数据联动，是下一代方向，但国内没人做好
+云原生 SaaS vs 私有化 | 国内药企因数据合规仍偏好私有化，但中型 MAH 开始接受 SaaS 化部署
+[P:常用样式] 二）初步市场数据（附出处，仅参考，未找到原文审阅）
+[P:Heading 2] 2.1 全球市场规模
+=== TABLE 9 (9 rows x 3 cols) ===
+数据点 | 数值 | 出处
+全球 PV 系统/软件市场（2025） | $75.8 亿 | Dataintelo《Pharmacovigilance System Market Size...》https://d
+全球 PV 市场（含服务外包全链条，2025） | $93.5 亿 | Ken Research《Global Pharmacovigilance Market 2026-2031》https
+全球 PV 软件子赛道（不含服务，2025） | $20.9 亿 → $50.6 亿 by 2035（CAGR 9.2%） | Precedence Research，转引于 Intuition Labs 白皮书
+全球 PV 系统 CAGR（2025-2034） | 10.2% | Dataintelo，同上
+软件类占整个 PV 市场比例 | 58.3% | Dataintelo，同上
+亚太地区增速（最快区域） | 12.74% CAGR | Straits Research《Pharmacovigilance and Drug Safety Software 
+北美地区全球市占 | 38.2% | Dataintelo，同上
+制药企业端收入占比 | 42.1% | Dataintelo，同上
+[P:Heading 2] 2.2 中国市场规模与 MAH 数据（数据仅参考，未找到包含原始数据文档）
+=== TABLE 10 (6 rows x 3 cols) ===
+数据点 | 数值 | 出处
+中国 PV+药物安全软件市场（2025） | 48.6 亿元人民币 | 博研咨询《2026 年中国药物警戒(PV)和药物安全软件行业市场规模...》https://www.docin.com/
+全国持证 MAH 企业总数 | 5,832 家 | 博研咨询《2026 年中国药物安全和药物警戒软件行业市场现状...》https://www.docin.com/touc
+已建药物警戒系统的 MAH | 4,957 家（占 85%） | 同上
+持有有效药品注册证的 MAH | 1,843 家 | 博研咨询《2026 年中国药物警戒服务行业市场规模...》https://www.docin.com/touch_new
+已建立 GVP 合规体系的 MAH | 1,729 家 | 同上
+=== TABLE 11 (7 rows x 5 cols) ===
+类型 | 含义 | 企业主体数（家） | 数据属性 | 说明
+A证 | 自行生产的药品上市许可持有人（MAH） | 未公开拆分 | — | NMPA年报仅披露许可证总张数，不按A/B/C/D拆分持有人主体数；纯A证 + A+B证合计约 4,580 家
+B证 | 委托生产的药品上市许可持有人（MAH，轻资产） | 1,252（纯B证） | √ 确定数 | 纯B证持有人精确数，药智网数据库，2025年3月4日
+A+B证 | 同时持有A证与B证的持有人（自产 + 部分委托） | 约 700 | △ 推算值 | 由持B证张数 2,470 张减去纯B证 1,252 张后（约1,218张）反推，假设平均每家持1.75张B证
+C证 | 接受委托生产的药品生产企业（CMO/CDMO，非MAH） | 未公开 | — | 不属于MAH持有人，不计入MAH统计
+D证 | 原料药生产企业 | 未公开 | — | 不属于MAH持有人，不计入MAH统计
+MAH合计 | A证 + A+B证 + 纯B证 | 5,832 | √ 确定数 | 博研咨询，引用药智网/NMPA数据库，2025年底
+[P:Heading 2] 2.3竞争格局数据（数据仅参考，未找到包含原始数据文档）
+=== TABLE 12 (4 rows x 3 cols) ===
+数据点 | 数值 | 出处
+中国 PV 市场头部 5 家合计市占 | 58.4%（中度集中） | 博研咨询《2026 年中国药物安全和警戒服务市场占有率...》https://www.docin.com/touch_n
+昆泰 IQVIA 中国市占 | 14.8% | 博研咨询《2026 年中国药物安全解决方案和药物警戒市场占有率...》https://www.docin.com/tou
+全球 PV Automation 市场格局 | Oracle/ArisGlobal/Veeva/IQVIA 主导 Top 20 药企；2025 年 8 月 IQVIA  | Mordor Intelligence《Pharmacovigilance Automation Market...》h
+[P:Heading 2] 2.4 政策依据
+=== TABLE 13 (5 rows x 2 cols) ===
+政策 | 出处
+GVP 强制要求 MAH 建立电子记录系统 + 飞行检查 | 国家药监局 2021 年第 65 号公告《药物警戒质量管理规范》https://www.gov.cn/gongbao/c
+MAH 注册要求：取得首个药品批准文号后 30 日内必须在国家 ADR 监测系统注册 | 同上，GVP 第十条
+2026 年新《药品管理法实施条例》进一步压实 MAH PV 主体责任 | 国务院 2026 年 1 月发布 https://www.nmpa.gov.cn/xxgk/fgwj/flxzhfg/2
+GVP 信息化工具要求：具备记录创建/审核/版本控制/数据采集/报告/存储/检索等功能 | GVP 第 109 条，同上
+[P:Heading 2] 2.5 口径差异注意事项
+[P:List Paragraph] 48.6 亿（中国）vs 75.8 亿（全球）：口径不同——中国数字是纯 PV+药物安全软件；全球数字含完整 PV 工作流+外包服务，不能直接对比
+[P:List Paragraph] 5,832 家 vs 1,843 家 MAH：前者是全口径（含医疗器械、中药等），后者是“持有有效药品注册证的”，后者更接近目标客户
+[P:List Paragraph] 多家豆丁网报告都来自博研咨询，可能是同一数据源换包装，需交叉验证
+[P:List Paragraph] Precedence Research 的 $20.9 亿是纯 PV 软件子赛道（不含服务），是做“数据库产品”最接近的 TAM
+[P:Heading 1] 三）竞品能力对比，参考
+[P:Heading 3] Veeva
+[P:Normal] 容来源：Veeva《Veeva Safety Suite》Product Sheet（2026 年 4 月版）｜Veeva 官网 Customers 页面（Safety 产品筛选）
+[P:Heading 4] I、整体定位
+[P:Normal] Veeva Safety Suite 由多个安全应用组成，全部运行在同一个 Veeva Vault 云平台上，构成统一的药物警戒（PV）系统。各应用共用一套数据模型，从而实现安全流程的端到端管理，提升运营效率并改善患者安全。
+[P:Heading 4] II、产品组成与关键能力
+[P:Normal] Safety Suite 包含五个产品：Safety、SafetyDocs 为成熟主力产品；Workbench、Signal、AI for Safety 为依赖 Safety 的早期产品。
+=== TABLE 14 (6 rows x 5 cols) ===
+产品 | 定位与关键能力 | 发布 | 状态 | 客户数
+Veeva Safety | 全球化 ICSR 安全病例接收、处理与上报系统，覆盖临床及上市后产品（药品、生物制品、疫苗、器械、组合产品）；内置网关对 | 2019 | 成熟 | 51–100
+Veeva SafetyDocs | 管理 PV 相关内容和流程：PSMF、PV 协议（PVA）、风险管理计划（RMP）及额外风险最小化措施（aRMM）、汇总 | 2019 | 成熟 | 11–50
+Veeva Safety Workbench | 报表与分析工具，处理大数据量与复杂分析；基于 Amazon Redshift，每晚全量重载 Safety 数据集，无需复 | 2023 | 早期 | 1–10
+Veeva Safety Signal | 信号检测解决方案；基于 Redshift 每日全量重载，内置 FAERS、VAERS、EVDAS 等数据源；采用行业标准 | 2023 | 早期 | 1–10
+Veeva AI for Safety | 嵌入 Veeva Safety 的行业专用 AI 智能体，运行于合规工作流内，可配置/扩展；含 Case Intake  | 2025 | 早期 | 1–10
+[P:Heading 4] III、平台与集成关系
+[P:Normal] •全部产品基于 Veeva Vault 平台。
+[P:Normal] •Veeva Safety 与 SafetyDocs 同库共存；Safety 与临床运营、EDC、RIM、质量、MedInquiry 等系统打通。
+[P:Normal] •Workbench、Signal、AI for Safety 均依赖 Veeva Safety，其中 Workbench 与 Signal 还依赖 Redshift 数据层。
+[P:Normal] •目标客户为企业制药、生物技术公司及 CRO。
+[P:Heading 4] IV、成熟度与市场信号
+[P:Normal] Safety 与 SafetyDocs 均为 2019 年发布、客户基数较大的成熟产品，构成 Suite 的核心。Workbench、Signal 与 AI for Safety 均为客户数 1–10 的早期产品，属于 Veeva 正在推广的新增长点；其中 Veeva AI for Safety 于 2025 年发布，体现 AI 能力正被嵌入既有药物警戒工作流。
+[P:Normal] 18 家具名客户清单
+=== TABLE 15 (19 rows x 3 cols) ===
+序号 | 客户 | 类型
+1 | Merck 默克 | 大型药企
+2 | Novo Nordisk 诺和诺德 | 大型药企
+3 | Sandoz 山德士 | 仿制药
+4 | Haleon 赫力昂 | 消费健康
+5 | UCB 优时比 | 药企
+6 | LEO Pharma 利奥制药 | 药企
+7 | Debiopharm | 药企
+8 | OM Pharma | 药企
+9 | Camurus | 药企
+10 | CG Oncology | Biotech
+11 | Inhibrx | Biotech
+12 | CRISPR Therapeutics | Biotech
+13 | Dermavant | Biotech
+14 | Cancer Research UK | 研究机构
+15 | Linical | CRO
+16 | Biomapas | CRO
+17 | Catalyst（Catalyst Clinical Research） | CRO
+18 | Arriello | CRO（PV 服务商）
+[P:Normal] 2 个匿名案例
+[P:Normal] •一家采用 CRISPR/Cas9 基因编辑技术的新兴 Biotech（页面未具名，从描述看很可能是 CRISPR Therapeutics 的早期匿名版案例）。
+[P:Normal] •一家总部位于加州长滩的 SMB Biotech（Head of IT：Jason Maze，页面未具名）。
+[P:Heading 4] V、结论
+[P:Normal] 在筛选条件下（Safety 产品×中小型 Biopharma / CDMO / CRO / 仿制药 / 大型 Biopharma），Veeva 官网公开展示的 Safety 客户案例共 32 条，对应约 18–20 家实际客户公司。
+[P:Heading 3] IQVIA Vigilance Platform
+[P:Heading 4] I、整体定位
+[P:Normal] IQVIA Vigilance Platform 是覆盖药物警戒安全生命周期全流程的 SaaS 系统：从不良事件接收（Intake）、病例处理与评估（Case）、定期报告（Periodics），到信号检测（Signal）与运营分析（Analytics），以模块化方式组合部署。官网将其定义为一套 SaaS 安全与药物警戒平台，覆盖安全生命周期的每个阶段，目标是降本、提质，并让客户直接访问自己的数据。
+[P:Normal] 来源：S1 平台主页首段。
+[P:Normal] 平台的差异化表述集中在 AI 与数据访问：以 AI 为核心，追求接近“touchless”的病例处理；同时强调客户可无缝访问自己的安全数据。服务侧由 3,000+ 安全专业人员覆盖 100+ 国家，支持各地本地合规。
+[P:Normal] 来源：S1 平台主页 “Your comprehensive, flexible, automated drug safety system”段落；“Over 3000 safety professionals in more than 100 countries.” 见同页标题下副文案。
+[P:Normal] 商业上分两条线：企业级平台按模块部署；面向新兴生物制药与小型药企，同一平台以标准化、预配置的 right-sized 套餐交付，这一点在 Fact Sheet 中有明确的定价与范围（见第五节）。
+[P:Heading 4] II、产品组成与关键能力
+[P:Normal] 平台由八个模块组成，可按需部署并随组织发展扩展。下表按官网模块卡片整理，仅保留可核验的能力描述（来源：S1 平台主页模块区；Vigilance Case 的补充能力来自 S2 模块页）。
+=== TABLE 16 (9 rows x 3 cols) ===
+模块 | 定位与关键能力 | 出处
+Vigilance Intake | 自动化处理 incoming 不良事件：安全来源处理、字典编码、完整数据审核、随访识别与合并 | S1
+Vigilance Case | 病例处理、医学评估与全球/本地上报的单一事实来源；Web + 移动端；MedDRA/WHODrug/公司字典编码；算法识 | S1 / S2
+Vigilance Periodics | 定期报告全生命周期管理与工作流，满足全球监管义务 | S1
+Vigilance Analytics | 下钻查询、报表库、运营仪表盘与合规指标，提供实时监督 | S1
+Vigilance Detect | 从多语言多源数据（含社交媒体与音频格式）自动识别不良事件与产品风险 | S1
+Vigilance Collect | 直接向报告者与患者采集不良事件，多语言、移动端 | S1
+Vigilance Signal | 基于多数据集的实时信号检测，支持主动、自适应的安全监测与风险管理 | S1
+Vigilance Administration | 全生命周期配置能力，管理 PLS 与用户安全 | S1
+[P:Heading 4] III、平台与集成关系
+[P:Normal] •单一SaaS 平台上的模块化组合：客户按需部署模块，随组织演进而增加功能（S1）。
+[P:Normal] •Vigilance Case 与 Intake、Submissions、Periodic 模块无缝集成；Case 是平台的中枢环节（S2）。
+[P:Normal] •Detect 与 Collect 负责扩展数据来源，Signal 负责跨数据集检测，Analytics 负责监督与报表（S1）。
+[P:Normal] •平台强调对任意格式 incoming 数据的近无人化处理与实时质量/完整性检查，并提供内置安全与隐私管理（S1）。
+[P:Normal] •服务模式：3,000+ 安全专业人员、100+ 国家，提供本地合规支持；产品设计来自一线安全专家的日常反馈（S1）。
+[P:Normal] •与 Fact Sheet 的关系：Fact Sheet 不是独立产品，而是同一企业级平台的标准化入门套餐（S3）。
+[P:Normal] 来源：S1 平台主页“Comprehensive flexibility…”段落与模块区；S2 模块页；S3 Fact Sheet。
+[P:Heading 4] IV、商业条款与市场信号
+[P:List Paragraph] 商业条款原文
+=== TABLE 17 (8 rows x 3 cols) ===
+项目 | Fact Sheet 原文 | 中文说明
+实施费 | Fast implementation：$49K implementation fee；12-15 weeks + 2  | 一次性实施费 49,000 美元；上线周期 12–15 周，另加 2 周 hypercare
+订阅费 | SaaS Subscription：$65K annually | 年订阅费 65,000 美元/年，不是“总价”
+合约与病例量 | 3-year term up to 1500 cases/yr*；includes 10 users | 3 年合约期，每年最多 1,500 例；包含 10 个用户
+更高病例量 | *We offer additional tiers for higher case volumes | 更高病例量提供额外档位，价格并非固定一档
+包含范围 | Platform setup；PV operations；Regulatory submissions（E2B gate | 平台搭建、PV 运营、监管提交（FDA/EMA/MHRA 的 E2B 网关、line listing 与 tabulat
+适用对象 | Built for：Sponsors ready to own their safety data, simplify  | 面向希望自己掌握安全数据、简化首个 PV 系统、建立与增长匹配基础的新兴生物制药/小型药企
+四项主张 | Data ownership | Regulatory readiness | AI-ready platform |  | 数据自有、监管就绪、AI 就绪平台、规模适配的投资
+[P:Normal] 来源：S3 Fact Sheet 第 1 页 “Fast implementation / SaaS Subscription / Built for” 栏位与页脚注释；该 PDF 为单页，无其他页码。
+[P:List Paragraph] 准确解读
+[P:Normal] •$49K 是“一次性实施费”（implementation fee）；$65K 是“年订阅费”（annually）。两者收费性质不同，不能相加当作“总价”，也不能把 $65K 当作三年总价（S3）。
+[P:Normal] •基础档为 3 年合约、每年最多 1,500 例（up to 1500 cases/yr），包含 10 个用户；更高病例量适用脚注 “We offer additional tiers for higher case volumes”（S3）。
+[P:Normal] •上线周期为 12–15 周，另加 2 周 hypercare；实施费与订阅费均为原文列示，未包含税费或折扣（S3）。
+[P:Normal] 按原文单价推算：3 年订阅费 65K × 3 = 195K 美元，加实施费 49K，合计约 244K 美元；此数为算术推算，Fact Sheet 未给出三年总价，正式报价以 IQVIA 为准。
+[P:Normal] B）成熟度与市场信号
+[P:Normal] •平台页 ©2025、Fact Sheet ©2026：产品已完成从“企业级平台”到“标准化入门套餐”的商业化分层，入门档明确标价与病例量上限（S1、S3）。
+[P:Normal] •2020 年行业文章判断：数据来源持续扩张（可穿戴、患者直报、社交媒体），Top 100 药企中 80%+ 将重新审视安全平台，自动化成为必然（S5）。
+[P:Normal] •2023 年 SAMM 白皮书给出 Safety Automation Maturity Matrix（先评估现状与目标，再分步、可扩展落地）；GenAI 白皮书则强调效率提升但必须 humans in the loop（S6、S7）。
+[P:Normal] 来源：S1、S3、S5–S7。S4–S7 白皮书正文需 Cookie/下载表单，官网仅公开摘要，本文只引用摘要，不转述未见内容。
+[P:Heading 4] V、IQVIA Vigilance Platform 客户总体情况
+[P:Normal] 官网公开具名客户案例：2个（Biovac、Sanofi）
+[P:Normal] 匿名案例：0 个（官网未提供匿名客户案例）
+[P:Normal] 规模数据（非案例条目）：30+ 平台客户、20 家 Top 50、200+ 技术客户
+[P:Normal] 需要区分“案例条目”与“客户规模数据”：Fact Sheet 的 30+ / 20 家是客户规模统计，不提供客户名称与案例详情，不能当作客户清单使用。
+[P:Normal] Fact Sheet 底部统计栏提供了可核验的规模数字（非客户清单）：
+=== TABLE 18 (7 rows x 2 cols) ===
+指标 | 数值
+Vigilance 平台客户（SaaS） | 30+
+全球 Top 50 药企客户 | 20 家（6 家总部在日本，8–9 家为全球总部）
+生产环境托管病例 | 1,200 万例；最大 60 万+/年，最小 5 例/月
+支持技术人员 | 220 名（全球及日本）
+PV 技术开发与交付人员 | 400+ 名，分布于多个区域
+技术客户 | 200+（47 单租户、149 多租户、8 本地部署）
+[P:Normal] 具名客户案例清单
+=== TABLE 19 (3 rows x 5 cols) ===
+序号 | 客户 | 国家 / 类型 | 案例主题 | 出处
+1 | Biovac | 南非 / 疫苗与医疗健康 | 从劳动密集型纸质 PV 流程转向数字化，用精简团队承接大工作量 | S1 平台主页 “Client case study”
+2 | Sanofi / （赛诺菲） | 法国 / 创新药与医疗健康 | •核心动作：将 AI 与自动化从数据录入拓展到医疗评估环节（Collect / Intake / Case / Anal | IQVIA Informa Connect 白皮书 / "Sanofi Revolutionizes Pharmacov
+[P:Normal] 来源：S1 平台主页 “Client case study” 区块；S3 Fact Sheet 未包含具名客户。
+[P:Normal] 案例详情（Biovac）
+[P:Normal] 官网以 Situation / Challenge / Solution / Impact 四段呈现。Situation 说明 Biovac 是南非医疗领军企业，正推动 PV 流程现代化；Challenge 指出其需从劳动密集型纸质系统转向数字化，以应对监管要求并用精简团队承接大工作量；Solution 说明其选择 IQVIA 的原因在于 AI 能力与可扩展性，并强调协作、效率与合规；Impact 为数据录入时间显著减少、合规与质量控制提升。
+[P:List Paragraph] Impact 原文：“significantly reducing time spent on data entry and enhancing compliance and quality control.”
+[P:List Paragraph] 来源：S1 平台主页 “Client case study” 区块。
+[P:List Paragraph] 证据边界：该案例属于官网营销性叙述，未披露量化指标（如处理时长下降百分比、病例量、上线周期、用户数），因此本文只复述“数据录入时间显著减少、合规与质量控制提升”，不据此推算投资回报。
+[P:Normal] 案例详情（Sanofi / Project ARTEMIS）
+[P:List Paragraph] Situation：Sanofi 是全球制药巨头，旗下疫苗与创新药业务覆盖 150+ 国家，全球患者安全团队（含外包）逾 600 人。15 年前病例管理团队约 100 人且为内部团队，如今 99% 的 PV 工作已外包，但核心数据录入与医疗评估仍严重依赖人工。面对产品组合向创新药转型的战略，Sanofi 决定启动 Project ARTEMIS，推动 PV 运营全面现代化。
+[P:List Paragraph] Challenge：Sanofi 每年需处理 70 万+ 条不良事件（Adverse Event）版本，且病例量以每年 高达 20% 的速度增长。传统手动流程面临三重结构性矛盾：① 质量不一致——纯手工录入难以保证标准化；② 效率枯竭——无法应对指数级增长的数据量；③ 成本攀升——外包模式本质上仍是"用人力堆人力"。与此同时，创新药对医学专业性的要求大幅提高，简单外包已无法满足医疗评估的深度需求。Girod 原话："十五年来什么都没变，变的只是我们现在外包给了别人，但本质上还是手动的。"
+[P:List Paragraph] Solution：Sanofi 选择 IQVIA Vigilance Platform（IVP）作为端到端的核心 PV 系统，理由有三：① IVP 的产品能力与路线图与长期愿景高度契合；② IQVIA 在全球药物警戒领域的专业积累（含合规处理）无可替代；③ 双方建立了真正的协作伙伴关系——不是一次性软件采购，而是持续共创的双向反馈循环。分阶段实施：2024 年 8 月第一阶段上线（Collect / Intake / Analytics + 旧系统集成），计划 2025 年底完成全系统替换。行业开创点：不同于行业多数公司只在 Intake（接收）环节引入自动化，Sanofi 让 AI 与自动化进一步渗透到 Case（医疗评估） 这个最需要专业判断的核心环节。核心理念是 "一个病例不再是一个病例"——不同复杂度的病例应获得不同级别的专业关注，有限的医疗资源被精准分配。
+[P:List Paragraph] Impact：成本已降低 15%，2027 年目标 降低 50%。正在用 IVP 端到端替换整个旧 PV 系统，Sanofi 将成为少数几个全自动化 PV 系统的制药公司之一，人力结构优化：减少外包人员负责的数据录入量，转而加强内部医疗专业团队，提升医疗评估质量
+[P:List Paragraph] Impact 原文摘录（Girod 原话）："We have seen that before the implementation of automation and in comparison to today, we saved an average of 15%. We are paying 15% less than what we used to pay in the past." 以及 "Our long-term vision is to replace our entire PV system... At that time, Sanofi is going to be one of the few pharma companies using a full system leveraging automation."
+[P:List Paragraph] 来源：IQVIA 2025 年 6 月 Informa Connect 刊发白皮书 "Sanofi Revolutionizes Pharmacovigilance with Project ARTEMIS"。
+[P:List Paragraph] 证据边界：该白皮书属 IQVIA 发布的客户合作宣传案例，披露了具体的成本节约数字（15% 已实现 / 50% 目标）和 IVP 模块组成，但未披露以下关键指标：① 单病例处理时长（TAT）下降百分比；② AI 在医疗评估环节的实际判断准确率或替代率；③ 70 万病例中不同复杂度病例的分级分布与资源分配数据；④ 医疗评估质量提升的量化指标（如不良因果判断正确率）。因此，本文复述"成本降 15% / 目标 50%"可作为直接证据，但 "AI 渗透到医疗评估环节" 属于方向性描述，无量化效果数据支撑。
+[P:List Paragraph] 实施历程
+=== TABLE 20 (5 rows x 2 cols) ===
+时间节点 | 里程碑事件
+2019 年 | Project ARTEMIS 雏形诞生，启动自动化之旅。初始聚焦于自动化数据录入——从源文档中提取信息并自动填充系统。
+2023 年夏 | 赛诺菲决定采取更全面的自动化策略，正式与 IQVIA 建立战略合作关系，选择 IQVIA Vigilance Platf
+2024 年 8 月 | 第一阶段实施完成，聚焦于 Collect（数据采集）、Intake（接收处理）、Analytics（分析）模块，以及与现
+2025 年底（目标） | 完成全系统替换，赛诺菲将成为少数几个端到端使用 IVP 全自动化药物警戒系统的制药公司之一。
+[P:List Paragraph] 成果与影响
+=== TABLE 21 (4 rows x 3 cols) ===
+维度 | 已实现（2024） | 目标（2027）
+成本节约 | 平均 15% | 50%
+系统架构 | Collect + Intake + Analytics + 与旧系统集成 | 端到端全 IVP 系统，替换所有旧 PV 系统
+团队聚焦 | 减少数据录入时间，初步解放人力 | 加强内部医疗团队，提升医疗评估质量
+[P:Heading 4] VI、结论
+[P:Normal] •官网客户披露度有限：Vigilance Platform 公开 2个具名案例（Biovac），没有 Veeva 式客户列表页；不能以案例数量推断市场份额或客户规模（S1）。
+[P:Normal] •客户规模应引用 Fact Sheet 的统计口径：30+ 平台客户、20 家 Top 50 药企、1,200 万托管病例、200+ 技术客户（S3）。
+[P:Normal] •横比注意：Veeva 的“18 家”来自Customers 页面筛选与去重；IQVIA 的 “1 个” 来自产品页案例区块。两者来源与筛选规则不同，不应直接对比数量。
+[P:Normal] •可对比维度建议：产品模块覆盖（Veeva 5 个应用 vs IQVIA 8 个模块）、部署与数据所有权（Veeva 统一 Vault 数据模型 vs IQVIA 模块化 SaaS + 数据自有）、商业化门槛（IQVIA 有公开的 $49K + $65K/年入门档，Veeva 未公开价格）。
+[P:Heading 2] 附：四家 PV 系统公开信息横向对照
+[P:Normal] Veeva Safety Suite ｜ IQVIA Vigilance Platform ｜ 太美 eSafety ｜ 百奥知 Bioknow PV
+[P:Normal] 说明：表内只对照各厂商公开信息口径，不评价产品优劣；各列数据来源见文末来源索引，凡官网未披露的项目一律写「未披露」，不做推测。
+=== TABLE 22 (10 rows x 5 cols) ===
+维度 | Veeva Safety Suite | IQVIA Vigilance Platform | 太美 eSafety | 百奥知 Bioknow PV
+产品形态 | 同一 Vault 平台上的安全应用组合 | 模块化 SaaS 药物警戒平台 | 符合 GVP 的一体化药物警戒数据库，覆盖临床 SAE 到上市后全流程 [T1] | 「药物警戒数据中心解决方案」：eSAE + eADR + PV 系统 + 一体化门户 + Gateway [Z1]
+组成 | 5个应用：Safety、SafetyDocs、Workbench、Signal、AI for Safety | 8个模块：Intake、Case、Periodics、Analytics、Detect、Collect、Signal、A | eSafety 数据库 + iPV Agent（AI 智能体）+ 全球递交 Gateway [T1][T2] | Bioknow PV + eSAE + eADR + PV 一体化门户 + Gateway [Z1]—[Z4]
+数据与集成 | 共用一套数据模型；与临床、EDC、RIM、质量等打通 | 模块化组合；Case 与 Intake、Submissions、Periodic 集成；强调数据自有 | 与本厂 eCooperate / eArchives 等产品同属一条产品线；Gateway 对接五大监管机构；与 EDC | eSAE 数据同步至 PV 与 EDC；eADR 同步至 Web 与 PV；Gateway 对接 NMPA/FDA/EM
+AI 能力 | Veeva AI for Safety（2025，早期，1–10客户）：Intake / Narrative / Cha | AI at core；Detect、Collect、Signal；GenAI 白皮书强调人在环 | iPV Agent：邮件自动化、叙事生成、个例处理、PV 翻译；自述合规率99.9%、重复任务自动化80%、处理准确性  | 2026 年发布信号检测、文献 AI 监控、DSUR/PSUR 一键生成、Narrative 秒级生成、医学机器翻译双语
+客户披露 | Customers 页 32 条内容、18 家具名客户 | 产品页1个具名案例（Biovac）；Fact Sheet 30+ 平台客户 | 自述500家申办方/CRO 使用 PV-eSafety；具名客户1家（豪森医药）；无客户案例页 [T1][T4] | 自述 300+/400+ 家（口径不一）；具名客户 0 家；无客户案例页 [Z1][Z2][Z6]
+商业条款 | 官网未公开价格 | $49K 实施 + $65K/年，3 年 1,500 例/年，10用户 | 官网未公开价格 | 官网未公开价格
+成熟度证据 | 产品页标注发布年份、状态、客户数区间 | Fact Sheet 规模统计 + 2020/2023白皮书方法论 | eSafety 2013—2015上线；iPV 2024—2025 推出；港交所上市（02576.HK）；ISO 420 | PV 系统 2012 年推出；2026 年 AI 功能密集迭代；等保三级 + ISO 系列认证；未检索到第三方市场份额报
+中国本地化与合规（新增） | 全球统一 Vault 平台；中国区本地化团队与交付能力官网未单列说明 | 全球平台 + 本地服务；中国区市占与本地化细节见原调研报告S1—S3 | 国产厂商；符合 GVP；直连 NMPA 直报系统；中英日多语言与双语同屏；WHO-UMC 认证供应商 [T1][T3] | 国产厂商；满足 NMPA/FDA/EMA/MHRA 上报；eSAE/eADR 面向国内临床与上市后场景；等保三级 [Z1
+公开信息可核验度（新增） | 高：产品页标注发布年份/客户数区间，另有独立 Customers 页 | 高：Fact Sheet 披露价格档位、客户规模、托管病例数 | 中：产品能力描述充分，但客户数、价格、部署方式为厂商自述或未披露 [T1][T3] | 中低：功能与公司资质可核验，客户数存在 300+/400+ 多口径，且无具名客户 [Z1]—[Z6]
+[P:Normal] 来源：Veeva 列来源为《Veeva Safety 产品与客户梳理报告》及 Veeva 官方 Product Sheet / Customers 页；IQVIA 列来源为原调研报告 S1—S3（官网平台页 ©2025、Fact Sheet ©2026、白皮书）；太美列来源 T1—T7；百奥知列来源 Z1—Z6。各厂商客户统计口径不同（Veeva 为案例页去重具名客户，IQVIA 为案例条目与 Fact Sheet 统计，太美/百奥知为厂商自述规模），数量不可横向直接比较。依据公开信息整理，不代表 IQVIA 官方报价或承诺；价格与档位以官方最新报价为准。
+[P:Heading 1] 四）PV 数据库基本需求
+[P:Normal] 需求 1：原生双语数据模型（不是补语言包），E2B(R3) 自动翻译
+[P:Normal] 数据结构设计时：
+[P:List Paragraph] 用已有的 PV 行业数据预训练翻译模型，不是通用机翻
+[P:List Paragraph] 自反馈记忆——用户改一次翻译，模型自动学到，下次同类型 case 翻译准确率提升
+[P:List Paragraph] 做“E2B Translator”工具：上传中文E2B→ 输出英文 E2B，MedDRA/WHODrug 字典自动映射，合规校验过 FDA/EMA schema
+[P:Normal] 需求 2：连接国产 PV 系统与国际监管的Gateway（E2B 校验）, 合规校验
+[P:Normal] 需求 3：灵活的行列表，数据清洗与数据可视化（考虑对接EDC和其他平台）
+[P:Normal] 茅鸯对,朱价.药物警戒数字化研究的知识图谱分析及其启示[J].中国现代应用药学,2022,39(22):3009-3013.DOI:10.13748/j.cnki.issn1007-7693.2022.22.017.
+[P:Normal] 五）药物警戒自动化市场总结
+=== TABLE 23 (7 rows x 4 cols) ===
+驱动因素 | 对 CAGR 预测的影响（约） | 地域相关性 | 影响时间窗口
+药品安全合规监管压力上升 | +2.8% | 全球，北美与欧洲执法最严格 | 短期（≤2 年）
+多渠道来源的不良事件数据量增长 | +3.1% | 全球，亚太增速最快 | 中期（2—4 年）
+以 AI/ML 为核心的安全平台快速普及 | +2.5% | 北美与欧洲领先 | 中期（2—4 年）
+大型药企降低服务成本的要求 | +1.9% | 全球，集中于前 20 大药企枢纽 | 长期（≥4 年）
+细胞与基因治疗上市后监测带来的自动化需求 | +1.2% | 北美与欧洲 | 长期（≥4 年）
+真实世界数据（RWD）网络扩展，支撑持续信号检测 | +1.4% | 以亚太为核心，辐射全球 | 中期（2—4 年）
+=== TABLE 24 (5 rows x 4 cols) ===
+制约因素 | 对 CAGR 预测的影响（约） | 地域相关性 | 影响时间窗口
+数据隐私与跨司法辖区合规障碍 | -1.6% | 全球，欧盟与中国最为突出 | 短期（≤2 年）
+遗留安全数据库集成复杂性 | -1.1% | 北美与欧洲 | 中期（2—4 年）
+专有 AI 模型引发的供应商锁定担忧 | -0.7% | 全球，中型生物科技公司感受更强 | 长期（≥4 年）
+多语言 NLP 模型偏差 | -0.5% | 亚太与拉美 | 中期（2—4 年）
+[P:Normal] 市场集中度示意——药物警戒自动化市场处于「集中」与「分散」之间，中等集中度。图片来源：Mordor Intelligence（CC BY 4.0）
+[P:Normal] 药物警戒自动化市场保持中等集中度。Oracle、ArisGlobal、Veeva Systems 和 IQVIA 在前 20 大药企中拥有庞大的装机基础，受益于嵌入式工作流和多年期验证锁定。IQVIA 与 Veeva 于 2025 年 8 月达成合作，将 Vigilance 与 Vault Safety 打通，消除了长期存在的数据流转瓶颈，帮助药企简化合规技术栈。
+[P:Normal] AB Cube、EXTEDO、RxLogix 等利基厂商通过提供可挂接在遗留数据库之上的模块化 API（无需推倒重来），在区域或功能层面开辟了桥头堡。空白市场机会包括面向去中心化试验的 ePRO 不良事件触发（Medidata 在该领域活跃），以及两家美国大厂正在试点的区块链审计追踪。咨询巨头埃森哲（Accenture）、高知特（Cognizant）、简柏特（Genpact）和塔塔咨询（TCS）将技术实施与托管服务捆绑，利用离岸人力压低 CRO 价格，但其领域深度正受到审根据报告范围界定，药物警戒自动化是指运用人工智能（AI）、机器学习（ML）、自然语言处理（NLP）和机器人流程自动化（RPA）等先进技术，对药物安全监测流程进行精简与自动化。它能够高效处理不良事件报告、病例处理、信号检测和监管合规活动，通过减少人工干预提高药物警戒工作流的准确性、速度与一致性，最终提升患者安全并支持更快速的监管决策。
+[P:Normal] 市场按组件、技术、功能、部署模式、终端用户和地区进行细分，覆盖全球主要地区 17 个国家的估算市场规模与趋势，并按美元计价提供各细分市场的市场价值。
+[P:Normal] 药物警戒自动化市场规模（2025 年 26.7 亿美元 → 2026 年 30.3 亿美元 → 2031 年 56.8 亿美元，CAGR 13.42%）。图片来源：Mordor Intelligence（CC BY 4.0）
+[P:Normal] 按组件划分的市场份额（2025 年）——软件 65.82%，其余为服务。图片来源：Mordor Intelligence（CC BY 4.0）
+[P:Normal] 按功能划分的市场份额（2025 年）——不良事件报告 38.46%，其余为自动化病例处理等合计份额。图片来源：Mordor Intelligence（CC BY 4.0）
+[P:Heading 1] 六）发力点与切入点
+[P:List Paragraph] 价格优势，驱动客户意愿
+[P:List Paragraph] 客户画像的确认，可以从中小MAH入手
+[P:List Paragraph] 提供数据迁移的便利性
+[P:List Paragraph] 数据挖掘功能与数据可视化（Real-Time）
+[P:List Paragraph] 自动化与人工智能的植入（工作流的设计，案例自动分类与分级，NLP，DeepLearning）
+[P:List Paragraph] 整个平台（platform）的完成度，和其他系统是否可以数据共享（Data Sync）
+[P:Heading 1] 七）八家药物警戒数据库与 AI 智能体平台汇总
+[P:Normal] 基于 BioAI Agents Directory「药物安全与药物警戒」分类的公开信息整理
+[P:Normal] 统一来源：bioai-agents.com 中文站 8 个平台条目页（页面发布2026-09、更新202610；抓取日期2026-11-09）
+=== TABLE 25 (10 rows x 8 cols) ===
+平台 | 定位 | 产品与 AI | 关键功能 | 部署 / 合规 | 客户与规模 | 定价 | 成熟度
+ArisGlobal | LifeSphere Safety 端到端 PV SaaS | 8 模块（MultiVigilance / Intake / 文献 / ReporterX / 信号 / 合规文档 /  | 受理、病例、文献、信号、安全文件、分发、50+ 报表 | SaaS；FDA E2B(R3) | 220+ 客户；Astellas / Roche / BI / AstraZeneca；受理 +65%、信号 +80%（ | Contact | 1987；2026-07 Dassault 收购待交割
+Ennov | 欧洲系 PV 套件 + 文档 | PV 套件、PV-Analyzer、PSMF；Ennov AI 于 v11.0（2025-12）交付；文献 AI 经 C | ICSR / E2B、统计信号、文献监测、PSMF | 部署未提；仅提 E2B | 650+ 组织、50 万用户；无病例量 / 准确率 | Contact | 1999，巴黎；AI 已正式发布
+Genpact | 托管服务型 AI PV | PVAI（OCR / RPA / NLP / ML）、Cora PV、GRaaS；无具名智能体 | 受理、病例、文献、信号、聚合报告、注册事务 | 托管服务，不可自部署；合规未提 | 约 146,500 员工；Bayer 2018、MHRA Yellow Card | 定制合同 | 1997；NYSE: G；信号软件已剥离
+Graph Safety | AI 原生 PV（知识图谱） | 知识图谱 + 可解释推理；Vertex AI / K8s；/intake、/nucleus、/report | 受理分诊、病例构建、聚合报告；信号待上线 | Google Cloud；引用 FDA AI 框架、EU AI 法案 | 融资 1,630 万美元；无具名客户；3 小时→10 分钟（自述） | Contact | 2024；6 模块中 3 个上线
+IQVIA | 外包规模 + 模块化 SaaS | Vigilance 八模块；AI/ML + GenAI；Detect 多语种含社媒音频；与 NVIDIA 合作 | 受理、病例、定期报告、信号、分析、LAPS | SaaS / 外包 / FSP；E2B、SSAE、16 个数据中心 | 约 93,000 员工、100+ 国家、3,000+ 安全专员；Sanofi、Biovac | Contact | 2016；NYSE: IQV
+Oracle Life Sciences | 云端 PV 套件 | Argus Safety、Safety One Intake（OCR/NLP/评分）、Empirica；OCI（ Ora | 接收、编码、评估、E2B、信号；文献未提 | OCI；E2B、EU GVP Module IX | 未披露客户数 / 病例量 / 准确率 | Contact；Intake 等另订阅 | 1977；企业级老牌
+RxLogix | 统一数据模型 PV 平台 | 20+ 应用；PVOne.AI（2026-04）智能体内嵌；LLM 无关 | 受理、病例 / 投诉、报告递交、信号、风险、质量 | 云原生 / 混合；GxP、HIPAA | 105+ 客户、46 部署；年 1,000 万+ 病例（自述）；FDA 4 年+、EMA 2025-12 | Contact | 2010（官网未标）；前十大药企口径不一
+Veeva Safety | Vault 内 ICSR 系统 | Vault Safety + SafetyDocs / Workbench / Signal；Falcon Safety | ICSR、E2B(R3) 递交、信号、报告分析；PSUR / 文献未提 | Vault 云；E2B(R3) | 未披露客户数 / 病例量 / 准确率 | Contact | 2007；NYSE: VEEV；AI 2026-04 商用
+来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva | 来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva | 来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva | 来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva | 来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva | 来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva | 来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva | 来源：B1—B8。客户数量、效率百分比均为条目页转述的厂商自述口径，未附独立基准；「未提及」指该条目页未披露。Veeva
+[P:Heading 1] 五）关键注意事项
+[P:List Paragraph] 豆丁网上的博研咨询报告可能是同一数据源不同名称
+[P:List Paragraph] 开发尽可能贴近PV日常使用的痛点，争取能有1~2个亮点打动客户
+[P:List Paragraph] 注 2026 年 FDA/EMA 联合发布的 AI Good Practice 指南——PV 领域 AI 自动化的合规边界即将明确
+[P:Heading 2] AI能力布局对比
+[P:Normal] 四家 AI 能力呈“服务商卖、药企买“格局：IQVIA、太美自建并对外售卖，Sanofi 外购自用；泰格是唯一“自建＋混合态”。PV 全链路无一家获公开硬证据，信号/安全性分析是共同空白；除客户案例与第三方评级外，关键数字均无独立审计。
+=== TABLE 26 (5 rows x 3 cols) ===
+公司 | 形态 | 公开证据画像与关键数字
+泰格 | 传统 CRO | PV 四家中最薄，强项在写作与翻译：泰雅平台 CSR 2–3 月→1–2 周、效能 +80%；2025H1 翻译约 2 
+太美 | SaaS＋AI 平台商 | 宣称最全、实证集中于递交：iPV 单份报告 <40 秒，累计递交 SUSAR 900+（有客户案例），客户 1,600+
+Sanofi | MNC 药企 | MNC 中最完整公开案例：ARTEMIS 年处理 70 万+ AE 报告、PV 成本已降 15%（目标 2027 年 -
+IQVIA | 数据平台型 CRO | intake 生产级最深：Vigilance Platform 承接 Sanofi 全球 PV（70 万+/年），Eve
+[P:Heading 1] 参考信息
+[P:List Paragraph] 深度智耀
+[P:List Paragraph] 深度智耀
+[P:List Paragraph] 里恩帮助页面：https://rh-clinical.yuque.com/staff-mwfmhu/xwq1t0/ygqxly?
+[P:List Paragraph] AB Cube SafetyEasy
+[P:List Paragraph] AB Cube platform
+[P:List Paragraph] [B0] BioAI Agents Directory：药物安全与药物警戒分类页（收录标准与导语）：https://bioai-agents.com/zh/category/drug-safety-pharmacovigilance/
+[P:List Paragraph] [B1] ArisGlobal 条目页（发布 2026-09-11 / 更新 2026-10-08）：https://bioai-agents.com/zh/agents/arisglobal/
+[P:List Paragraph] [B2] Ennov 条目页（更新 2026-10-08）：https://bioai-agents.com/zh/agents/ennov/
+[P:List Paragraph] [B3] Genpact 条目页（发布 2026-09-11 / 更新 2026-10-08）：https://bioai-agents.com/zh/agents/genpact/
+[P:List Paragraph] [B4] Graph Safety 条目页（更新 2026-10-08 / 10-09）：https://bioai-agents.com/zh/agents/graph-safety/
+[P:List Paragraph] [B5] IQVIA 条目页（发布 2026-09-11 / 更新 2026-09-26）：https://bioai-agents.com/zh/agents/iqvia/
+[P:List Paragraph] [B6] Oracle Life Sciences 条目页（发布 2026-09-11 / 更新 2026-10-08）：https://bioai-agents.com/zh/agents/oracle-life-sciences/
+[P:List Paragraph] [B7] RxLogix 条目页（发布 2026-09-11 / 更新 2026-10-28）：https://bioai-agents.com/zh/agents/rxlogix/
+[P:List Paragraph] [B8] Veeva Safety 条目页（更新 2026-10-08）：https://bioai-agents.com/zh/agents/veeva-safety/
+[P:List Paragraph] [S1] Platform 主页
+https://www.iqvia.com/solutions/safety-regulatory-compliance/safety-and-pharmacovigilance/iqvia-vigilance-platform
+类型：产品页面，页脚 ©2025
+用途：平台定位、8 大模块、Biovac 案例、整体价值主张
+[P:List Paragraph] [S2] Vigilance Case 模块页
+https://www.iqvia.com/solutions/safety-regulatory-compliance/safety-and-pharmacovigilance/iqvia-vigilance-platform/iqvia-vigilance-case
+类型：产品子页面
+用途：Case 模块详细能力（Web/移动端、字典编码、随访/重复识别、与 Intake/Submissions/Periodic 集成）
+[P:List Paragraph] [S3] Vigilance Platform Fact Sheet
+https://www.iqvia.com/-/media/iqvia/pdfs/library/fact-sheets/2026/iqvia-vigilance-platform.pdf
+类型：Fact Sheet PDF，单页，标注 ©2026 / 文件编号 26-CRS-2636-07JUL
+[P:List Paragraph] 用途：商业条款（49K实施+65K/年）、3 年 1,500 例/年、10 用户、规模数据（30+ 平台客户、20 家 Top 50、1,200 万托管病例、220 名支持人员、400+ PV 技术人员、200+ 技术客户）
+[P:List Paragraph] [S4] PV AI/Automation Tools You Can Deploy Right Now 白皮书页面
+https://www.iqvia.com/library/white-papers/pv-ai-automation-tools-you-can-deploy-right-now
+类型：白皮书摘要页，发布 2020-04-23
+用途：8 个当下可用的 AI/自动化工具摘要（正文 PDF 需 Cookie/下载表单，官网未公开全文）
+[P:List Paragraph] [S5] PharmExec 文章 PDF（转载，文件名pe_biopharmaceutical_launch_strategies_2020）
+https://www.iqvia.com/-/media/iqvia/pdfs/library/articles/pe_biopharmaceutical_launch_strategies_2020.pdf
+类型：行业转载文章 PDF，2020-01-06，作者 Joe Rymsza（IQVIA PV 与监管技术 VP）
+用途：2020 年行业自动化趋势判断（Top 100 药企 80%+ 将重新审视安全平台）
+[P:List Paragraph] [S6] Fully Automated Safety（SAMM）白皮书页面
+https://www.iqvia.com/library/white-papers/fully-automated-safety
+类型：白皮书摘要页，2023-04-11
+用途：Safety Automation Maturity Matrix 方法论（正文需下载，仅引用摘要）
+[P:List Paragraph] [S7] Generative AI: The Future of Pharmacovigilance 白皮书页面
+https://www.iqvia.com/library/white-papers/generative-ai-the-future-of-pharmacovigilance
+类型：白皮书摘要页，2023-12-14
+用途：GenAI 在 PV 中的应用与边界（必须 humans in the loop，正文需下载）
+[P:List Paragraph] [T1] 太美 eSafety 产品页：https://www.taimei.com/esafety
+[P:List Paragraph] [T2] 太美 iPV Agent 产品页：https://www.taimei.com/ipv
+[P:List Paragraph] [T3] 太美「关于我们」（公司、里程碑、认证）：https://www.taimei.com/about
+[P:List Paragraph] [T4] 太美新闻：协助豪森医药完成海外 PV 数据回迁（2026-09-28）：https://www.taimei.com/cn/6488
+[P:List Paragraph] [T5] 太美行业观点：eSafety 破局 EMA 递交难题：https://www.taimei.com/cn/6421
+[P:List Paragraph] [T6] 太美新闻：IDC 中国临床试验信息系统市场份额 2025（2026-11-06）：https://www.taimei.com/cn/6504
+[P:List Paragraph] [T7] 太美行业观点：MHRA gateway 对接要点：https://www.taimei.com/cn/6431
+[P:List Paragraph] [Z1] 百奥知 药物警戒中心解决方案页：https://bioknow.net/src/pages/sol-pvc/index.html#/
+[P:List Paragraph] [Z2] 百奥知 PV 产品页：https://bioknow.net/src/pages/product-pv/index.html
+[P:List Paragraph] [Z3] 百奥知 eSAE 产品页：https://bioknow.net/src/pages/product-esae/index.html
+[P:List Paragraph] [Z4] 百奥知 eADR 产品页：https://bioknow.net/src/pages/product-eadr/index.html
+[P:List Paragraph] [Z5] 百奥知「关于我们」：https://bioknow.net/src/pages/about/index.html
+[P:List Paragraph] [Z6] 百奥知公司新闻列表（引用 2026-04-23 至 2026-08-11 条目）：https://bioknow.net/src/pages/news/index.html
+[P:List Paragraph] 茅鸯对,朱价.药物警戒数字化研究的知识图谱分析及其启示[J].中国现代应用药学,2022,39(22):3009-3013.DOI:10.13748/j.cnki.issn1007-7693.2022.22.017.
+[P:List Paragraph] 2025 年 8 月 18 日 — IQVIA与 Veeva Systems今日宣布建立全球临床与商业合作伙伴关系，并完全解决所有未决法律纠纷。根据长期协议条款，客户可将 Veeva 与 IQVIA 的软件、数据、技术和服务产品以简单高效的方式组合使用。
+[P:List Paragraph] 纠纷的核心就是 MDM 数据产品：
+[P:List Paragraph] IQVIA 有自己的 MDM 产品叫 OneKey——覆盖全球 1,000 万+ 医疗专业人员、机构、监管机构的标准化编码，是行业最完整的数据源之一
+[P:List Paragraph] Veeva 想做自己的 MDM 产品叫 Veeva OpenData（后来发展成 Veeva Network），但起步晚、积累少
+[P:List Paragraph] 多家药企同时用 IQVIA 和 Veeva，出于 MDM 集成需要，授权 Veeva 访问 IQVIA OneKey 数据，但明确签了“不能用来改进自己的竞争性 MDM 产品”。
+[P:List Paragraph] IQVIA 指控 Veeva 把 OneKey 数据直接抄进了 OpenData / Veeva Network，还用来改进自己的 CRM 和 MDM 应用——法院2021年裁决 IQVIA 胜诉
+[P:List Paragraph] 2019年10月29日— 达索系统宣布完成对Medidata Solutions, Inc.的收购。Medidata凭借其临床专业能力与云端解决方案，为治疗药物的更高效研发与商业化提供支撑。本次收购让达索系统得以通过覆盖医疗健康行业、其生态与市场需求的全系列解决方案，在个性化医疗与以患者为中心的体验时代引领生命科学的数字化转型。
+[P:List Paragraph] 2026年7月23日— 达索系统布，已签署确定性收购协议，将收购生命科学行业领先的AI原生企业合规平台商ArisGlobal。根据协议条款，达索系统将在交割时支付约18亿美元现金，并提供最高2亿美元的额外对价（与多年期AI相关收入里程碑挂钩）
+[P:List Paragraph] 固定部分：交割时直接支付的18亿美元现金（确定性支出）；
+[P:List Paragraph] 浮动部分：最高2亿美元的“额外对价”（不会直接支付，需等ArisGlobal达成多年期AI相关收入里程碑才触发）——这意味着达索非常看重Aris的AI商业化能力，用“里程碑”绑定未来收益，降低自身前期风险
+[P:Heading 1] 附属文档
+[P:List Paragraph] 太美医疗 eSafety 药物警戒系统产品与客户梳理报告
+[P:List Paragraph] IQVIA Vigilance Platform 产品与客户梳理报告
+[P:List Paragraph] IQVIA Vigilance Platform Fact Sheet
+[P:List Paragraph] AB Cube SafetyEasy 药物警戒平台产品与客户梳理报告
+[P:List Paragraph] Clinflash Safety 药物警戒系统产品与客户梳理报告
+[P:List Paragraph] Veeva Safety 产品与客户梳理报告
+[P:List Paragraph] Veeva Product Sheet-Vault Safety
+[P:List Paragraph] RxLogix Safety-in-a-Box 药物警戒平台产品与客户梳理报告
+[P:List Paragraph] 百奥知 Bioknow PV 药物警戒系统产品与客户梳理报告
+[P:List Paragraph] 洞悉 Holox 药械安全 AI 平台产品与客户梳理报告
+[P:List Paragraph] Sanofi-revolutionizes-pharmacovigilance-with-project-artemis
+[P:List Paragraph] IQIVA-vigilance-case
