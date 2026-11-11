@@ -397,15 +397,15 @@ rows = [
     ['切换成本', '高：数据 + 流程双锁定，换系统≈重建', '低：数据库不动，可随时增减或退出'],
 ]
 make_table(s, 0.42, 3.42, 12.49, [1.30, 5.60, 5.59], rows, row_h=0.40, header_h=0.30, body_size=8.5)
-callout(s, '三家都避开"数据库"位，只做库之上的自动化与服务；对照 IQVIA（自有库 + 3,000 人 BPO）是唯一"库+服务"双持者——空位在中小客群。')
+callout(s, '三家都避开"数据库"位，只做库之上的自动化与服务；双持者仅 IQVIA 与泰格（本土），空位在中小客群。')
 
 # ---------- 14 双维定位矩阵 ----------
-s = content_slide('竞品格局 · 05', '四家形态定位：自有数据库 × 代运营，IQVIA 是唯一的双持者', 14)
+s = content_slide('竞品格局 · 05', '四家形态定位：自有数据库 × 代运营，双持者只有 IQVIA 与泰格', 14)
 tb(s, 0.42, 2.00, 7.6, 0.24, [[('纵轴：是否自有安全数据库（system of record）　｜　横轴：是否提供人力代运营（BPO）', 8.5, False, GRAY)]], line_spacing=1.0)
 cell_x = [0.95, 4.58]; cell_y = [2.40, 4.30]; cw2, ch2 = 3.35, 1.72
 cells = [
-    (0, 0, '有库 · 无服务', 'Veeva · Oracle Argus\nArisGlobal · RxLogix', '卖系统与验证包，不碰运营', False),
-    (1, 0, '有库 · 有服务', 'IQVIA', '唯一双持：Vigilance 安全数据库 + 3,000 人 BPO', True),
+    (0, 0, '有库 · 无服务', 'Veeva · Oracle Argus\nArisGlobal · RxLogix\n百奥知 · 太美', '卖系统与验证包，不碰运营', False),
+    (1, 0, '有库 · 有服务', 'IQVIA\n泰格 ClinFlash Safety', '双持：自有库 + 自有 PV 团队（泰格 190+ 人）', True),
     (0, 1, '无库 · 无服务', '（空白象限）', '不具备 PV 供给能力，无实质玩家', False),
     (1, 1, '无库 · 有服务', 'Genpact · Accenture · TCS', '在客户的库上做自动化与代运营', False),
 ]
@@ -414,18 +414,19 @@ for ci, cj, head, vend, note, hi in cells:
     rect(s, cx, cy, cw2, ch2, CREAM if hi else WHITE,
          line_color=ACCENT if hi else LINEC, line_w=1.6 if hi else 0.75)
     tb(s, cx+0.16, cy+0.13, cw2-0.3, 0.24, [[(head, 9.5, True, ACCENT if hi else GRAY)]])
-    vp = [[(ln, 11.5 if hi else 9.5, True, NAVY)] for ln in vend.split('\n')]
+    vp = [[(ln, 10.5 if hi else 9, True, NAVY)] for ln in vend.split('\n')]
     tb(s, cx+0.16, cy+0.45, cw2-0.3, 0.52, vp, space_after=1, line_spacing=1.06)
     tb(s, cx+0.16, cy+ch2-0.66, cw2-0.3, 0.50, [[(note, 8.5, False, BODY)]], line_spacing=1.08)
 
-rect(s, 8.13, 2.40, 0.05, 2.78, ACCENT)
-tb(s, 8.38, 2.42, 4.4, 0.28, [[('四点关键澄清', 11, True, NAVY)]])
+rect(s, 8.13, 2.40, 0.05, 3.02, ACCENT)
+tb(s, 8.38, 2.42, 4.4, 0.28, [[('五点关键澄清', 11, True, NAVY)]])
 bullets(s, 8.36, 2.80, 4.42, 2.80, [
     ('IQVIA 有库：', 'Vigilance Case 官方定位为"single-source-of-truth case processing, assessment and submissions"，Administration 管 PLS 与用户权限'),
     ('但可拆可合：', 'Detect / Collect 为 system agnostic，可挂客户既有 Argus——能卖整库，也能只卖模块或只卖人'),
     ('数据所有权 ≠ 存储位置：', '"客户数据自有"指可导出、可收回，不等于数据不在厂商系统内'),
-    ('替换还是叠加：', 'Veeva / Argus 与 IQVIA 是正面替代（同抢"库"位）；Genpact / Accenture / TCS 与它们是叠加关系，不构成替代'),
-], size=8.8, gap=8)
+    ('替换还是叠加：', 'Veeva / Argus / 泰格 ClinFlash / IQVIA 同抢"库"位；Genpact / Accenture / TCS 只做库之上的层，是叠加而非替代'),
+    ('泰格＝本土版 IQVIA：', 'ClinFlash Safety 为自研安全数据库（支持 E2B R3 / Gateway），叠加 190+ 人 PV 团队——本土"库+服务"双持'),
+], size=8.4, gap=6)
 callout(s, 'IQVIA 的 14.8% 中国市占来自"不挑客户系统现状"；CRO 若自建，真正对标的是它不愿下沉的价格带，而非它本身。')
 
 # ---------- 15 聚拢逻辑 ----------

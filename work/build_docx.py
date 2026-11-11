@@ -194,7 +194,9 @@ add_table(
         ['切换成本', '高：数据 + 流程双锁定，换系统近乎重建', '低：数据库不动，可随时增减服务范围或退出'],
     ],
     widths=[0.95, 2.75, 2.75])
-bullet('注意：IQVIA 不在此列（常见误判）：', 'IQVIA Vigilance Platform 官网明确定位为"a drug safety system"，其 Vigilance Case 模块提供"single-source-of-truth case processing, assessment and submissions"，Vigilance Administration 提供 PLS 配置与用户安全管理——即具备完整的 system of record 能力，Biovac 案例亦是从纸质系统迁移到该平台。因此 IQVIA 属"平台厂商"侧，且同时拥有 3,000+ 安全专员的 BPO，是四家中唯一"自有库 + 代运营"双持者。补充：其 Vigilance Detect / Collect 为 system agnostic 模块，可挂接客户既有数据库，故 IQVIA 既能卖整库、也能只卖模块或只卖人力。')
+bullet('注意：IQVIA 不在此列（常见误判）：', 'IQVIA Vigilance Platform 官网明确定位为"a drug safety system"，其 Vigilance Case 模块提供"single-source-of-truth case processing, assessment and submissions"，Vigilance Administration 提供 PLS 配置与用户安全管理——即具备完整的 system of record 能力，Biovac 案例亦是从纸质系统迁移到该平台。因此 IQVIA 属"平台厂商"侧，且同时拥有 3,000+ 安全专员的 BPO，是全球范围内"自有库 + 代运营"的双持者。补充：其 Vigilance Detect / Collect 为 system agnostic 模块，可挂接客户既有数据库，故 IQVIA 既能卖整库、也能只卖模块或只卖人力。')
+bullet('本土双持者：泰格 ClinFlash Safety：', '泰格医药官网将 ClinFlash Safety 明确列为"Pharmacovigilance safety database"，clinflash.com 产品页称之为"安全数据库"，支持 E2B R3 标准、可通过 Gateway 或 XML 对接各类监管机构，覆盖临床及上市后阶段；泰格 2025 年半年报披露药物警戒专业团队超过 190 人，覆盖美国、欧洲、日本、东南亚与中国。即"自研数据库 + 自有 PV 团队"，结构与 IQVIA 一致，但价格带与服务半径更贴近国内中小 MAH——这是本土最值得对标的对手。')
+bullet('有库但无代运营证据：百奥知 / 太美：', '百奥知官网产品为"药物安全管理系统（简称 PV）V4.7"，eADR 采集后"在 PV 系统中快速生成个例报告"；太美官网将 eSafety 称为"药物警戒数据库"，月处理 ICSR 9,000 例、服务 500 家申办方/CRO。两者均确认为自有数据库产品；本次检索未找到其提供 PV 代运营（外包人力）业务的一手证据，故仅列为"有库 · 无服务"，不补充服务类信息。')
 bullet('对 CRO 的意义（关键）：', '这三家全球最大的服务商，都主动选择不做数据库、只做数据库之上的一层。原因不是能力不足，而是数据库位已被 Argus / Veeva / IQVIA 以验证成本和数据模型锁定，硬碰不划算。这恰好说明：CRO 若自建，不应瞄准"替代 Argus"，而应做"轻量数据库 + 自动化 + 代运营"的组合，去接他们不愿下沉的中小 MAH 客群。')
 conclusion('服务托管型证明"在别人数据库上做自动化与服务"是可持续生意；但对中小 MAH 而言，他们仍缺一个买得起、用得动的数据库——这是留给 CRO 的真实空位。')
 
