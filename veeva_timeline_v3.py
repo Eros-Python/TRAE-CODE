@@ -38,7 +38,7 @@ n = len(events)
 #   y:  4.5 ~ 6.0      timeline 下方节点标题区（不会低于 y=4.0）
 #   y: -3.0 ~  3.5     Impact 框区
 ax.set_xlim(-0.7, n - 0.1)
-ax.set_ylim(-4.5, 13.8)   # 底部从 -3.5 → -4.5，框底能完整可见
+ax.set_ylim(-4.8, 13.8)   # 底部再放 0.3，框底完整可见
 ax.set_aspect('auto')
 
 # ---------- 时间轴 ----------
@@ -90,14 +90,13 @@ for idx, yr, color, title, sub in events:
                 ha='center', va='center', fontsize=7.8, color=GRAY, style='italic',
                 multialignment='center')
 
-# ---------- Impact 框：底部居中 ----------
-# 框宽度 5.0，居中于画布底部（画布 x: -0.7 ~ 9.9，中心 x=4.6）
+# ---------- Impact 框：整体下移 + 高度缩小 + 内容下移 ----------
 box_w = 5.0
-box_center_x = (ax.get_xlim()[0] + ax.get_xlim()[1]) / 2   # = 4.6
-right_box_left = box_center_x - box_w / 2   # 左边缘 = 2.1
+box_center_x = (ax.get_xlim()[0] + ax.get_xlim()[1]) / 2
+right_box_left = box_center_x - box_w / 2
 right_box_w = box_w
-right_box_y = -3.8
-right_box_h = 7.6
+right_box_y = -4.2              # 框底下移（从 -3.8 → -4.2）
+right_box_h = 5.8               # 高度缩小（从 7.6 → 5.8），框顶 = 1.6，底部对齐图例
 
 right_box = FancyBboxPatch(
     (right_box_left, right_box_y),
@@ -124,8 +123,9 @@ impact_lines = [
 ]
 
 bullet_colors = {'●': NAVY, '★': MILESTONE, '▲': ACCENT}
-impact_start_y = right_box_y + right_box_h - 0.68
-line_spacing = 0.70
+# 内容往下移，紧凑排列，刚好填满缩小后的框
+impact_start_y = right_box_y + right_box_h - 0.45   # 从框顶往下 0.45 开始第一条
+line_spacing = 0.68
 
 for i, (bullet, yr, text) in enumerate(impact_lines):
     y = impact_start_y - i * line_spacing
