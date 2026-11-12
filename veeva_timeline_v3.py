@@ -90,13 +90,12 @@ for idx, yr, color, title, sub in events:
                 ha='center', va='center', fontsize=7.8, color=GRAY, style='italic',
                 multialignment='center')
 
-# ---------- Impact 框：在画布底部，右下角 ----------
-# 框：右边缘 x=画布右内，左边缘 x=4.0（避开左侧节点区域）
-# 框 y：底部 y=-3.2，顶部 y=3.2 → 高度 6.4，够放 7 条
-right_box_right = n - 0.2       # 右边缘
-right_box_left = 4.0            # 左边缘（画布左算起）
+# ---------- Impact 框：右移 + 内容居中 ----------
+# 框：左边缘 4.5（比之前 4.0 右移 0.5，避开 2025 下方标签），右边缘贴画布右边
+right_box_right = n - 0.1       # 右边缘（贴紧画布）
+right_box_left = 4.5            # 右移 0.5，避开左侧标签
 right_box_w = right_box_right - right_box_left
-right_box_y = -3.2              # 底部
+right_box_y = -3.2
 right_box_h = 6.4
 
 right_box = FancyBboxPatch(
@@ -130,11 +129,17 @@ line_spacing = 0.72
 for i, (bullet, yr, text) in enumerate(impact_lines):
     y = impact_start_y - i * line_spacing
     col = bullet_colors.get(bullet, GRAY)
-    ax.text(right_box_left + 0.22, y, f'{bullet} {yr}',
-            ha='left', va='center', fontsize=9.5, fontweight='bold', color=col, zorder=6)
-    ax.text(right_box_left + 1.30, y, text,
+    # bullet+年份（带色粗体）左半居中，正文（灰色）右半居中
+    # 用两段 text，分别以框中心往左/右偏一点对齐
+    # 先画正文（浅灰），再画 bullet+年份（带色粗体）叠上去
+    bullet_yr_text = f'{bullet} {yr}'
+    ax.text(right_box_left + right_box_w / 2, y, bullet_yr_text,
+            ha='right', va='center', fontsize=9.5, fontweight='bold', color=col, zorder=6)
+    # bullet+年份和正文之间留点空格：用空白把正文往右推
+    spacing = '    '  # 4 个空格
+    ax.text(right_box_left + right_box_w / 2 + 0.30, y, spacing + text,
             ha='left', va='center', fontsize=9, color=GRAY,
-            multialignment='left', linespacing=1.35, zorder=6)
+            multialignment='left', linespacing=1.35, zorder=5)
 
 # ---------- 标题 + 图例 ----------
 ax.text(0.5, 0.975, 'Veeva 发展脉络 · 突出 Safety 与 AI 节点（精简版）',
