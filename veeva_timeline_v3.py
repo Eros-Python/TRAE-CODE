@@ -90,12 +90,14 @@ for idx, yr, color, title, sub in events:
                 ha='center', va='center', fontsize=7.8, color=GRAY, style='italic',
                 multialignment='center')
 
-# ---------- Impact 框：左边缘再右移 + 宽度缩小 + 高度加高 ----------
-right_box_right = n - 0.1       # 右边缘（贴紧画布）
-right_box_left = 5.5            # 左边缘从 4.5 右移到 5.5，空白大幅减少
-right_box_w = right_box_right - right_box_left   # 宽度 4.4
-right_box_y = -4.0              # 底部再下 0.8，给更高的框留空间
-right_box_h = 7.8               # 高度从 6.4 → 7.8，容纳 3 行 Impact
+# ---------- Impact 框：底部居中 ----------
+# 框宽度 5.0，居中于画布底部（画布 x: -0.7 ~ 9.9，中心 x=4.6）
+box_w = 5.0
+box_center_x = (ax.get_xlim()[0] + ax.get_xlim()[1]) / 2   # = 4.6
+right_box_left = box_center_x - box_w / 2   # 左边缘 = 2.1
+right_box_w = box_w
+right_box_y = -3.8
+right_box_h = 7.6
 
 right_box = FancyBboxPatch(
     (right_box_left, right_box_y),
