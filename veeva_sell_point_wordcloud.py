@@ -252,8 +252,10 @@ for k, v in freq.items():
     label = label_map.get(k, k)
     final_freq[label] += v
 
-# real-time 保持原始命中权重（不加额外加权，约 6.0）
-# final_freq['real-time'] = final_freq.get('real-time', 0) + 0.0
+# real-time 降低一个级别：从 6.0 → 4.5（中等偏低，比 streamlined ops 小两圈）
+final_freq['real-time'] = 4.5
+# 删除 case processing
+final_freq.pop('case processing', None)
 
 print("\nFinal labels for word cloud:")
 for k, v in final_freq.most_common():
