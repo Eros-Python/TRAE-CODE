@@ -75,12 +75,12 @@ def divider(slide, y=1.90, x=0.42, w=12.49):
 def kpi(slide, x, y, w, h, big, small, big_size=20):
     rect(slide, x, y, w, h, CREAM)
     tb(slide, x+0.14, y+0.09, w-0.28, 0.45, [[(big, big_size, True, ACCENT)]], line_spacing=1.0)
-    tb(slide, x+0.14, y+0.52, w-0.28, h-0.58, [[(small, 8.5, False, GRAY2)]], line_spacing=1.04)
+    tb(slide, x+0.14, y+0.52, w-0.28, h-0.58, [[(small, 9.5, False, GRAY2)]], line_spacing=1.04)
 
 def callout(slide, text, prefix='结论：', y=6.32):
     rect(slide, 0.42, y, 12.49, 0.36, CREAM)
     rect(slide, 0.42, y, 0.055, 0.36, ACCENT)
-    tb(slide, 0.62, y, 12.2, 0.36, [[(prefix, 10, True, ACCENT), (text, 10, False, BODY)]],
+    tb(slide, 0.62, y, 12.2, 0.36, [[(prefix, 11, True, ACCENT), (text, 11, False, BODY)]],
        anchor=MSO_ANCHOR.MIDDLE, line_spacing=1.0)
 
 def set_cell_borders(cell, color='D9D2C2', w=9525):
@@ -113,7 +113,7 @@ def style_cell(cell, runs, fill=None, align=PP_ALIGN.LEFT):
     set_cell_borders(cell)
 
 def make_table(slide, x, y, w, col_widths, rows_data, header_fill=NAVY,
-               row_h=0.34, header_h=0.34, body_size=8.5, zebra=True, first_col_bold=True):
+               row_h=0.34, header_h=0.34, body_size=9.5, zebra=True, first_col_bold=True):
     n_r, n_c = len(rows_data), len(rows_data[0])
     gfx = slide.shapes.add_table(n_r, n_c, Inches(x), Inches(y), Inches(w), Inches(row_h*n_r))
     table = gfx.table
@@ -127,7 +127,7 @@ def make_table(slide, x, y, w, col_widths, rows_data, header_fill=NAVY,
         for j, val in enumerate(row):
             cell = table.cell(i, j)
             if i == 0:
-                style_cell(cell, [(val, 9.5, True, WHITE)], fill=header_fill,
+                style_cell(cell, [(val, 10.5, True, WHITE)], fill=header_fill,
                            align=PP_ALIGN.CENTER if j > 0 else PP_ALIGN.LEFT)
             else:
                 fill = CREAM if (zebra and i % 2 == 0) else WHITE
@@ -137,7 +137,7 @@ def make_table(slide, x, y, w, col_widths, rows_data, header_fill=NAVY,
                            align=PP_ALIGN.LEFT)
     return gfx
 
-def bullets(slide, x, y, w, h, items, size=10, gap=4, lead_color=ACCENT):
+def bullets(slide, x, y, w, h, items, size=11, gap=4, lead_color=ACCENT):
     paras = []
     for it in items:
         if isinstance(it, tuple):
@@ -162,7 +162,7 @@ for sldId in list(xml_slides):
     prs.part.drop_rel(rId)
     xml_slides.remove(sldId)
 
-TOTAL = 17
+TOTAL = 20
 
 def content_slide(eyebrow_text, title_text, page):
     s = prs.slides.add_slide(layouts['正文1'])
@@ -182,7 +182,7 @@ for ph in s.placeholders:
     elif ph.placeholder_format.idx == 11:
         ph.text_frame.text = 'PV 数据库市场调研总结'
 tb(s, 3.34, 4.88, 9.9, 0.4, [[('——市场规模 × 竞品格局 × 自建决策建议', 15, False, BODY)]])
-tb(s, 3.34, 5.38, 9.9, 0.35, [[('2026 年 11 月 ｜ 依据《PV 数据库市场调研》与公开资料整理；推断数据均已标注', 11, False, GRAY)]])
+tb(s, 3.34, 5.38, 9.9, 0.35, [[('2026 年 11 月 ｜ 依据《PV 数据库市场调研》与公开资料整理；推断数据均已标注', 12, False, GRAY)]])
 
 # ---------- 2 TOC ----------
 s = prs.slides.add_slide(layouts['目录'])
@@ -203,7 +203,7 @@ for i, (num, t, desc) in enumerate(toc_items):
             ph.text_frame.text = num
         elif idx == 11 + i*2:
             ph.text_frame.text = t
-    tb(s, 7.95, y+0.60, 4.9, 0.3, [[(desc, 8.5, False, GRAY)]])
+    tb(s, 7.95, y+0.60, 4.9, 0.3, [[(desc, 9.5, False, GRAY)]])
 
 # ---------- 3 PART 01 ----------
 s = prs.slides.add_slide(layouts['标题页'])
@@ -226,11 +226,11 @@ bullets(s, 0.42, 3.72, 7.2, 2.4, [
     ('区域结构：', '亚太增速最快（CAGR 12.74%），北美占 38.2%；中国市场增速高于全球'),
     ('口径提示：', '中国 ¥48.6 亿含服务/解决方案成分；海外纯软件口径中国约 ¥3 亿（GIA 2026）——真实区间在两者之间'),
     ('增量来源：', '新建 MAH 首次建库 + 存量系统替换 + AI 功能升级三类需求叠加'),
-], size=9.5, gap=5)
+], size=10.5, gap=5)
 s.shapes.add_picture(f'{A}/img_automation.png', Inches(7.95), Inches(3.30), width=Inches(2.30))
-tb(s, 7.95, 5.94, 2.4, 0.3, [[('PV 自动化市场规模（Mordor，CC BY 4.0）', 7.5, False, GRAY)]], line_spacing=1.0)
+tb(s, 7.95, 5.94, 2.4, 0.3, [[('PV 自动化市场规模（Mordor，CC BY 4.0）', 8.5, False, GRAY)]], line_spacing=1.0)
 s.shapes.add_picture(f'{A}/img_region.png', Inches(10.45), Inches(3.55), width=Inches(2.45))
-tb(s, 10.45, 4.72, 2.5, 0.3, [[('全球 PV 系统市场区域分布 2025（Dataintelo）', 7.5, False, GRAY)]], line_spacing=1.0)
+tb(s, 10.45, 4.72, 2.5, 0.3, [[('全球 PV 系统市场区域分布 2025（Dataintelo）', 8.5, False, GRAY)]], line_spacing=1.0)
 callout(s, 'PV 软件是产业链中增长最快的环节，自动化子赛道（13.4%）跑赢整体（10.2%）——增量主战场在"软件 + AI 自动化"。')
 
 # ---------- 5 中国 MAH ----------
@@ -260,7 +260,7 @@ for big, small in [('2,997 项','2025 年新药临床试验登记，同比 +18.0
                    ('10–15%','纯 B 证 MAH 年增速（推断，已从 +121% 回落至 +16%）')]:
     rect(s, rx, cy, 3.93, 0.94, CREAM)
     tb(s, rx+0.13, cy+0.07, 3.7, 0.3, [[(big, 13, True, ACCENT)]], line_spacing=1.0)
-    tb(s, rx+0.13, cy+0.38, 3.7, 0.52, [[(small, 8, False, GRAY2)]], line_spacing=1.03)
+    tb(s, rx+0.13, cy+0.38, 3.7, 0.52, [[(small, 9, False, GRAY2)]], line_spacing=1.03)
     cy += 1.04
 callout(s, '只有"临床阶段 Biotech + 有上市后产品的 MAH"对 PV 数据库有刚性需求——合计约 3,000+ 家且持续扩容，构成目标客户基本盘。')
 
@@ -271,13 +271,13 @@ kpi(s, 0.42+(kw+kg), ky, kw, kh, '65.82%', '自动化市场中软件占比（202
 kpi(s, 0.42+(kw+kg)*2, ky, kw, kh, '58.4%', '中国 PV 市场 CR5，中度集中（博研咨询）')
 kpi(s, 0.42+(kw+kg)*3, ky, kw, kh, '14.8%', 'IQVIA 中国市占第一（博研咨询）')
 s.shapes.add_picture(f'{A}/img_concentration.png', Inches(0.42), Inches(3.22), width=Inches(7.45))
-tb(s, 0.42, 5.28, 7.4, 0.25, [[('市场集中度示意：处于"集中"与"分散"之间（Mordor，CC BY 4.0）', 7.5, False, GRAY)]], line_spacing=1.0)
+tb(s, 0.42, 5.28, 7.4, 0.25, [[('市场集中度示意：处于"集中"与"分散"之间（Mordor，CC BY 4.0）', 8.5, False, GRAY)]], line_spacing=1.0)
 bullets(s, 0.42, 5.58, 7.45, 0.75, [
     ('头部锁定：', 'Oracle / ArisGlobal / Veeva / IQVIA 以嵌入式工作流 + 多年期验证锁定 Top 20 药企；2025-08 IQVIA×Veeva 和解并打通数据'),
     ('增长驱动：', '监管压力 +2.8 · AE 数据量 +3.1 · AI 普及 +2.5 · 药企降本 +1.9（对 CAGR 贡献，Mordor）'),
-], size=8.5, gap=3)
+], size=9.5, gap=3)
 s.shapes.add_picture(f'{A}/img_cluster.png', Inches(8.35), Inches(3.10), width=Inches(2.42))
-tb(s, 8.20, 5.40, 4.6, 0.5, [[('PV 数字化研究关键词聚类：机器学习 / 深度学习 / 信息提取为研究主线（《中国现代应用药学》2022）', 7.5, False, GRAY)]], line_spacing=1.05)
+tb(s, 8.20, 5.40, 4.6, 0.5, [[('PV 数字化研究关键词聚类：机器学习 / 深度学习 / 信息提取为研究主线（《中国现代应用药学》2022）', 8.5, False, GRAY)]], line_spacing=1.05)
 callout(s, '"中等集中"＝头部锁定大客户、长尾仍开放：面向中小 MAH 的轻量化、国产合规产品仍有结构性窗口。')
 
 # ---------- 7 PART 02 ----------
@@ -299,7 +299,7 @@ rows = [
     ['商业条款', '未公开价格', '$49K 实施 + $65K/年（3 年、1,500 例/年、10 用户）', '未公开价格', '未公开价格'],
     ['中国本地化', '全球统一平台，中国区能力未单列', '全球平台+本地服务；中国市占 14.8%', '直连 NMPA 直报；中英日双语；WHO-UMC 认证', 'NMPA/FDA/EMA/MHRA 上报；等保三级'],
 ]
-make_table(s, 0.42, 2.02, 12.49, [1.05, 2.86, 2.86, 2.86, 2.86], rows, row_h=0.60, header_h=0.32, body_size=8)
+make_table(s, 0.42, 2.02, 12.49, [1.05, 2.86, 2.86, 2.86, 2.86], rows, row_h=0.60, header_h=0.32, body_size=9)
 callout(s, '各家客户数口径不同（去重具名 vs 厂商自述），不可直接横比；"未披露 ≠ 没有"。', prefix='注：')
 
 # ---------- 9 Veeva ----------
@@ -314,14 +314,14 @@ bullets(s, 0.42, 3.72, 7.2, 2.4, [
     ('平台锁定：', '与临床、EDC、RIM、质量系统打通——卖的是数据模型与生态，而非单点功能'),
     ('增长曲线：', 'Workbench / Signal / AI for Safety 均为 1–10 客户早期产品，正向存量客户交叉销售'),
     ('客群覆盖：', '大药企 + Biotech + CRO（Linical、Biomapas 等 4 家 CRO 具名）——CRO 是其明确目标客群'),
-], size=9.5, gap=5)
+], size=10.5, gap=5)
 rect(s, 7.95, 3.28, 4.96, 2.85, CREAM2)
 tb(s, 8.15, 3.42, 4.6, 0.3, [[('对 CRO 的启示', 12, True, NAVY)]])
 bullets(s, 8.15, 3.78, 4.6, 2.2, [
     '黏性来自数据模型与多系统集成，不在功能清单长短',
     '百万美元级客单价 + 重量级实施 → 中小 MAH 市场天然留空',
     '其 CRO 客群策略证明"CRO 用 PV 平台服务客户"模式成立',
-], size=9, gap=4)
+], size=10, gap=4)
 callout(s, 'Veeva = 平台生态型：强在数据模型与生态集成；价格与实施重量是其在中国中小客群的最大短板。')
 
 # ---------- 10 IQVIA ----------
@@ -336,14 +336,14 @@ bullets(s, 0.42, 3.72, 7.2, 2.4, [
     ('行业标杆：', 'Sanofi ARTEMIS 年处理 70 万+ AE，AI 从 Intake 渗透至医疗评估核心环节，2025 年底完成全系统替换'),
     ('平台+服务捆绑：', '3,000+ 安全专员、100+ 国家本地合规，外包服务与软件互相导流'),
     ('竞合信号：', '2025-08 与 Veeva 和解并打通数据流转——头部玩家从竞争走向竞合'),
-], size=9.5, gap=5)
+], size=10.5, gap=5)
 rect(s, 7.95, 3.28, 4.96, 2.85, CREAM2)
 tb(s, 8.15, 3.42, 4.6, 0.3, [[('对 CRO 的启示', 12, True, NAVY)]])
 bullets(s, 8.15, 3.78, 4.6, 2.2, [
     '"平台 + 代运营"正是 CRO 自建 PV 的可行模式参照',
     '公开入门价验证了中小客群付费意愿，可作定价锚点',
     '中国市占 14.8% 居第一，是国产化替代的直接对标对象',
-], size=9, gap=4)
+], size=10, gap=4)
 callout(s, 'IQVIA = AI+服务双轮型：唯一公开定价的头部玩家，验证了 PV 系统产品化、下沉化的商业路径。')
 
 # ---------- 11 PART 03 ----------
@@ -365,7 +365,7 @@ rows = [
     ['中国第一梯队', '太美 eSafety · 百奥知 · 洞悉 Holox · Clinflash', 'GVP 合规 + 国产替代 + 中文场景深耕', '太美自述 500 家客户（港股上市）；百奥知自述 300+ 家'],
     ['中国轻量化', 'PVwatch（南京天韬）· iDrugSafety（梅斯）', '轻量 SaaS、用户体验与性价比取胜', '面向国内中小 MAH，区域化服务'],
 ]
-make_table(s, 0.42, 2.02, 12.49, [1.45, 2.90, 3.85, 4.29], rows, row_h=0.62, header_h=0.32, body_size=8.5)
+make_table(s, 0.42, 2.02, 12.49, [1.45, 2.90, 3.85, 4.29], rows, row_h=0.62, header_h=0.32, body_size=9.5)
 callout(s, '全球拼"平台锁定"，中国拼"国产替代 + 轻量化"；AI 原生厂商是共同变量——梯队边界正在重排。')
 
 # ---------- 13 服务托管型：无自有数据库 ----------
@@ -384,7 +384,7 @@ for i, (name, quote, verdict) in enumerate(cards):
     rect(s, x, 1.98, cw, 1.32, CREAM)
     rect(s, x, 1.98, 0.055, 1.32, ACCENT)
     tb(s, x+0.16, 2.04, cw-0.3, 0.26, [[(name, 11, True, NAVY)]])
-    qp = [[(ln, 8, False, GRAY2)] for ln in quote.split('\n')]
+    qp = [[(ln, 9, False, GRAY2)] for ln in quote.split('\n')]
     tb(s, x+0.16, 2.32, cw-0.3, 0.53, qp, space_after=0, line_spacing=1.05)
     tb(s, x+0.16, 2.86, cw-0.3, 0.40, [[(verdict, 8, False, BODY)]], line_spacing=1.08)
 rows = [
@@ -396,7 +396,7 @@ rows = [
     ['合规责任', '厂商交付验证包，客户自行完成 IQ/OQ 与放行', '服务商承担 SOP、质量体系与检查应对（TCS 经 FDA/MHRA 检查）'],
     ['切换成本', '高：数据 + 流程双锁定，换系统≈重建', '低：数据库不动，可随时增减或退出'],
 ]
-make_table(s, 0.42, 3.42, 12.49, [1.30, 5.60, 5.59], rows, row_h=0.40, header_h=0.30, body_size=8.5)
+make_table(s, 0.42, 3.42, 12.49, [1.30, 5.60, 5.59], rows, row_h=0.40, header_h=0.30, body_size=9.5)
 callout(s, '三家只做库之上的自动化与服务，本身不拥有数据库；既有库又有服务的是 IQVIA、泰格、太美（太美智研）。')
 
 # ---------- 14 双维定位矩阵 ----------
@@ -448,7 +448,7 @@ bullets(s, 0.42, 2.46, 7.35, 3.8, [
     ('CRO 的天然位置：', 'SAE→ICSR 数据同源，PV 是临床链条的自然延伸；手握项目入口，PV 数据库是提升客户生命周期价值与黏性的最佳载体'),
     ('竞争卡位：', '太美已从临床 SaaS 延伸进 PV，IQVIA"平台+服务"验证模式成立；我们不建，客户数据与 PV 预算就被平台商拿走'),
     ('AI 平权窗口：', 'AI/NLP 把病例处理成本降低一个数量级，新进入者首次可能以 1/10 成本提供合规系统——窗口约 2–3 年'),
-], size=9.5, gap=6)
+], size=10.5, gap=6)
 rect(s, 8.05, 2.02, 4.86, 4.10, CREAM2)
 tb(s, 8.22, 2.16, 4.5, 0.3, [[('怎么做（边界与路径）', 12, True, NAVY)]])
 bullets(s, 8.22, 2.52, 4.52, 3.5, [
@@ -456,10 +456,63 @@ bullets(s, 8.22, 2.52, 4.52, 3.5, [
     ('差异化三件套：', '原生双语 E2B(R3) 自动翻译 ｜ NMPA/FDA/EMA Gateway 合规校验 ｜ 对接 EDC 的实时行列表与可视化'),
     ('路径：', '先做 1–2 个痛点亮点（E2B 翻译、一键递交），绑定自有临床项目验证，再扩为平台'),
     ('红线：', '不重造 Argus 式大平台；不自建 MDM 等重数据资产'),
-], size=9, gap=5)
+], size=10, gap=5)
 callout(s, '自建 PV 数据库不是做软件生意，而是用系统锁住临床客户的全生命周期——建议做：轻量做、从痛点做。', prefix='一句话：')
 
-# ---------- 15 thanks ----------
+# ---------- 17 IQVIA 卖点提炼 ----------
+s = content_slide('附录 · 01', 'IQVIA Vigilance Platform：库 + 服务 + AI 三位一体', 17)
+tb(s, 0.42, 2.02, 12.2, 0.26, [[('基于 IQVIA 官方宣传图（2025 年）与 Sanofi / Biovac 案例整理', 9.5, False, GRAY)]])
+cq = [0.42, 4.69, 8.96]; cw4, cy4, ch4 = 3.95, 2.42, 3.48
+sell_pts = [
+    ('① 形态独特', '库 + 服务双持',
+     'Vigilance Case 为完整 system of record（single-source-of-truth），叠加 3,000+ 安全专员的全球 BPO（100+ 国家）；Detect / Collect 为 system agnostic 模块——可拆可合，不挑客户系统现状',
+     'Sanofi ARTEMIS 年处理 70 万+ AE；中国市占 14.8%'),
+    ('② AI 覆盖深度', '7 步骤全链条自动化',
+     'Detect → Collect → Intake → Case → Periodics → Analytics → Signal 每一步都有 AI 插件：AE Detect、Med Info Chatbot、iSearch、Auto Seriousness、Auto Report、TreeScan® 等',
+     '"Touchless" case processing 目标'),
+    ('③ 局限与提醒', '高价锁库的双刃剑',
+     '库 + 服务双重锁定，客户切换成本极高；价格带偏高，中小 MAH / Biotech 买不起；全球合规能力虽强，对中国本土中小客群的本地化服务未必最优',
+     '这正是本土 CRO 的结构性机会'),
+]
+for i, (lab, ttl, body, data) in enumerate(sell_pts):
+    x = cq[i]
+    rect(s, x, cy4, cw4, ch4, CREAM if i == 1 else WHITE,
+         line_color=ACCENT if i == 1 else LINEC, line_w=1.6 if i == 1 else 0.75)
+    tb(s, x + 0.2, cy4 + 0.14, cw4 - 0.4, 0.24, [[(lab, 9, True, ACCENT if i == 1 else GRAY)]])
+    tb(s, x + 0.2, cy4 + 0.44, cw4 - 0.4, 0.34, [[(ttl, 12, True, NAVY)]])
+    rect(s, x + 0.2, cy4 + 0.88, 0.55, 0.03, ACCENT if i == 1 else LINEC)
+    tb(s, x + 0.2, cy4 + 1.02, cw4 - 0.4, 1.76, [[(body, 10, False, BODY)]], line_spacing=1.22)
+    tb(s, x + 0.2, cy4 + ch4 - 0.60, cw4 - 0.4, 0.46, [[(data, 9, True, NAVY)]], line_spacing=1.0)
+callout(s, 'IQVIA 的真正护城河不是库也不是服务，而是"全链条 AI + 全球合规能力"的组合拳；中小客群买不起、也用不动——这是我们的结构性机会。', prefix='对我们的启示：')
+
+# ---------- 18 IQVIA 官方图 1 ----------
+s = content_slide('附录 · 02', 'IQVIA 官方宣传图：Safety Services + Technology 双轨', 18)
+tb(s, 0.42, 2.02, 12.2, 0.26, [[('来源：IQVIA 2025 年官方宣传物料', 9.5, False, GRAY)]])
+img1 = '/workspace/.uploads/8df21fb4-b80e-4320-9bc8-b357fdfee603_90c79d7b-7cf0-46fb-8a6f-dbf85ad9069f.jpg'
+pic1 = s.shapes.add_picture(img1, Inches(0.42), Inches(2.42), width=Inches(12.49))
+# 如果图片高度超过可用空间则缩宽
+avail_h = 3.90
+if pic1.height > Inches(avail_h):
+    ratio = avail_h / (pic1.height / 914400)
+    new_w = (pic1.width / 914400) * ratio
+    pic1.width = Inches(new_w)
+    pic1.height = Inches(avail_h)
+    pic1.left = Inches(0.42 + (12.49 - new_w) / 2)
+
+# ---------- 19 IQVIA 官方图 2 ----------
+s = content_slide('附录 · 03', 'IQVIA 官方宣传图：7 步骤 AI 自动化能力矩阵', 19)
+tb(s, 0.42, 2.02, 12.2, 0.26, [[('来源：IQVIA 2025 年官方宣传物料', 9.5, False, GRAY)]])
+img2 = '/workspace/.uploads/77c95cfb-6cfb-4ad1-8476-24d075ffc5db_ef4a864d-698f-47d4-a392-c22c83257ba8.jpg'
+pic2 = s.shapes.add_picture(img2, Inches(0.42), Inches(2.42), width=Inches(12.49))
+avail_h2 = 3.90
+if pic2.height > Inches(avail_h2):
+    ratio = avail_h2 / (pic2.height / 914400)
+    new_w = (pic2.width / 914400) * ratio
+    pic2.width = Inches(new_w)
+    pic2.height = Inches(avail_h2)
+    pic2.left = Inches(0.42 + (12.49 - new_w) / 2)
+
+# ---------- 20 thanks ----------
 prs.slides.add_slide(layouts['答谢页'])
 
 prs.save(OUT)
