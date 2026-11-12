@@ -1,4 +1,4 @@
-"""Veeva 发展脉络 v3.1 —— 所有主事件放上方，下方完全留给 Impact 框"""
+"""Veeva 发展脉络 v3.2 —— Impact 框在 timeline 下方节点之下，彻底不重叠"""
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -14,7 +14,6 @@ GRAY = '#5F6368'
 MILESTONE = '#8B4513'
 WHITE = '#FFFFFF'
 
-# (idx, 年份, 主色, 主标题, 副标题)
 events = [
     (0,  '2007', GRAY,      '公司成立',                       'Vault CRM 同年上线\nPeter Gassner + Matt Wallach'),
     (1,  '2010', GRAY,      'Vault CRM 美国市占第一',         '启动 Vault 第二条产品线'),
@@ -28,30 +27,36 @@ events = [
     (9,  '2026', MILESTONE, 'UCB 全球 Safety 全面迁移',         None),
 ]
 
-fig, ax = plt.subplots(figsize=(20, 10))
+# ---------- 画布 ----------
+fig, ax = plt.subplots(figsize=(22, 13))
 n = len(events)
-ax.set_xlim(-0.6, n - 0.2)
-ax.set_ylim(-1.5, 11)
+
+# 画布分区：
+#   y: 10.5 ~ 13.5  标题区
+#   y:  8.5            timeline 上方
+#   y:  7.2            timeline_y
+#   y:  4.5 ~ 6.0      timeline 下方节点标题区（不会低于 y=4.0）
+#   y: -3.0 ~  3.5     Impact 框区
+ax.set_xlim(-0.7, n - 0.1)
+ax.set_ylim(-3.5, 13.8)
 ax.set_aspect('auto')
 
-# 时间轴
-timeline_y = 6.8
+# ---------- 时间轴 ----------
+timeline_y = 7.2
 ax.axhline(y=timeline_y, xmin=0.02, xmax=0.98, color=NAVY, linewidth=5, zorder=1)
 
-# 年份刻度
+# ---------- 年份文字（不带垂直竖线） ----------
 for idx, yr, *_ in events:
-    ax.axvline(x=idx, ymin=0.43, ymax=0.57, color=NAVY, linewidth=2, zorder=2)
     ax.text(idx, timeline_y - 0.55, yr, ha='center', va='top',
             fontsize=12, fontweight='bold', color=NAVY)
 
 # ---------- 节点布局：严格上下交替 ----------
-# 10 个事件：0下 1上 2下 3上 4下 5上 6下 7上 8下 9上
-# 这样里程碑也自然错开
-upper = {1, 3, 5, 7, 9}   # 上：2010市占第一 / 2013上市 / 2021 PBC / 2023 Suite补全 / 2026 UCB
-lower = {0, 2, 4, 6, 8}   # 下：2007成立 / 2011进中国 / 2019 Suite+NLP / 2022 22R3 / 2025 AI Agent
+upper = {1, 3, 5, 7, 9}   # 上：2010/2013/2021/2023/2026
+lower = {0, 2, 4, 6, 8}   # 下：2007/2011/2019/2022/2025
+
+label_dist = 2.5   # 标签离时间轴距离
 
 for idx, yr, color, title, sub in events:
-    # 节点大小
     if color == MILESTONE: dot_size = 340
     elif color == NAVY:    dot_size = 260
     elif color == ACCENT:  dot_size = 300
@@ -64,74 +69,77 @@ for idx, yr, color, title, sub in events:
 
     is_upper = idx in upper
     dir_sign = 1 if is_upper else -1
-    base_y = timeline_y + dir_sign * (2.0 if is_upper else 1.8)
+    base_y = timeline_y + dir_sign * label_dist
 
-    # 连接线
-    conn_y = timeline_y + dir_sign * 0.85
-    ax.plot([idx, idx], [timeline_y + dir_sign * 0.28, conn_y],
-            color=color, lw=1.5, zorder=3)
-    ax.plot([idx, idx], [conn_y, base_y + dir_sign * 0.12],
-            color=color, lw=1.5, zorder=3)
+    # 只有一段连接线：标签 → 节点
+    # 标签框边缘（大概 base_y ± 0.5）→ 节点边缘（timeline_y ± 0.2）
+    label_edge_y = base_y - dir_sign * 0.50
+    node_edge_y  = timeline_y + dir_sign * 0.2
+    ax.plot([idx, idx], [label_edge_y, node_edge_y],
+            color=color, lw=1.6, zorder=3)
 
-    # 主标题
+    # 主标题（带白框）
     ax.text(idx, base_y, title, ha='center', va='center',
             fontsize=10.5, fontweight='bold', color=color,
-            bbox=dict(boxstyle='round,pad=0.38', facecolor=WHITE, edgecolor=color,
-                      alpha=0.95, linewidth=1.3))
+            bbox=dict(boxstyle='round,pad=0.40', facecolor=WHITE, edgecolor=color,
+                      alpha=0.96, linewidth=1.3))
 
-    # 下方公司事件自己的副标题
+    # 下方公司事件（2013 前）自己的副标题
     if sub and not is_upper:
         ax.text(idx, base_y + dir_sign * 0.95, sub,
-                ha='center', va='center', fontsize=7.5, color=GRAY, style='italic',
+                ha='center', va='center', fontsize=7.8, color=GRAY, style='italic',
                 multialignment='center')
 
-# ---------- 右下角 Impact 框 ----------
-# 完全在 timeline 下方（y: 0.0 ~ 3.8），不和任何下方节点冲突（只有 idx 0,1,2 有下方内容）
-right_box_x = n - 0.15
-right_box_y = 0.0
-right_box_w = 4.6
-right_box_h = 3.6
+# ---------- Impact 框：在画布底部，右下角 ----------
+# 框：右边缘 x=画布右内，左边缘 x=4.0（避开左侧节点区域）
+# 框 y：底部 y=-3.2，顶部 y=3.2 → 高度 6.4，够放 7 条
+right_box_right = n - 0.2       # 右边缘
+right_box_left = 4.0            # 左边缘（画布左算起）
+right_box_w = right_box_right - right_box_left
+right_box_y = -3.2              # 底部
+right_box_h = 6.4
 
-# 框在画布右边区域（x 从 5.25 到 9.85），避开 idx 0,1,2 下方区域（x=0~2）
 right_box = FancyBboxPatch(
-    (right_box_x - right_box_w, right_box_y),
+    (right_box_left, right_box_y),
     right_box_w, right_box_h,
-    boxstyle='round,pad=0.15',
-    facecolor='#F5F7FB', edgecolor=NAVY, linewidth=1.5, alpha=0.98, zorder=4
+    boxstyle='round,pad=0.20',
+    facecolor='#F5F7FB', edgecolor=NAVY, linewidth=1.6, alpha=0.98, zorder=4
 )
 ax.add_patch(right_box)
 
-ax.text(right_box_x - right_box_w / 2, right_box_y + right_box_h - 0.22,
+# 框标题
+ax.text(right_box_left + right_box_w / 2, right_box_y + right_box_h - 0.32,
         '关键 Impact（2013–2026）',
-        ha='center', va='center', fontsize=11, fontweight='bold', color=NAVY)
+        ha='center', va='center', fontsize=12, fontweight='bold', color=NAVY, zorder=5)
 
+# 7 条 Impact
 impact_lines = [
     ('★', '2013', '纽交所上市 VEEV · 市值 $13B（2023）'),
     ('●', '2019', 'Safety Suite 发布 + NLP AI\nSafety + SafetyDocs 同 Vault 数据模型 · 客户 51–100'),
     ('★', '2021', '全球首家上市公司转 PBC · 重新定义公司目的'),
-    ('●', '2022', '22R3 数据模型大改版：\nCase Promotion 打通 API · OTC 品类 · 重复 Case 智能检测 · 分两批 Rollout'),
-    ('●', '2023', 'Suite 分析层补全：\nWorkbench（Redshift 每日 Reload）+ Signal（FAERS/VAERS 同步）'),
-    ('▲', '2025', 'AI Agent 嵌入合规工作流：\nCase Intake / Narrative / Chat · 有 Safeguards · 10 月全产品线'),
-    ('★', '2026', 'UCB 全球 Safety 全面迁移（最大单一客户迁移案）'),
+    ('●', '2022', '22R3 数据模型大改版：\nCase Promotion 打通 API · OTC 品类支持\n重复 Case 智能检测 · 分两批 Rollout（量大罕见）'),
+    ('●', '2023', 'Suite 分析层补全：\nWorkbench（Redshift 每日 Reload）\nSignal（FAERS/VAERS/EVDAS 每日同步）'),
+    ('▲', '2025', 'AI Agent 嵌入合规工作流：\nCase Intake / Narrative / Chat · 有 Built-in Safeguards\n10 月全产品线铺开'),
+    ('★', '2026', 'UCB 全球 Safety 全面迁移（目前最大单一客户迁移案）'),
 ]
 
 bullet_colors = {'●': NAVY, '★': MILESTONE, '▲': ACCENT}
-impact_start_y = right_box_y + right_box_h - 0.55
-line_spacing = 0.46
+impact_start_y = right_box_y + right_box_h - 0.70
+line_spacing = 0.72
 
 for i, (bullet, yr, text) in enumerate(impact_lines):
     y = impact_start_y - i * line_spacing
     col = bullet_colors.get(bullet, GRAY)
-    ax.text(right_box_x - right_box_w + 0.2, y, f'{bullet} {yr}',
-            ha='left', va='center', fontsize=8.5, fontweight='bold', color=col)
-    ax.text(right_box_x - right_box_w + 1.05, y, text,
-            ha='left', va='center', fontsize=8, color=GRAY,
-            multialignment='left', linespacing=1.28)
+    ax.text(right_box_left + 0.22, y, f'{bullet} {yr}',
+            ha='left', va='center', fontsize=9.5, fontweight='bold', color=col, zorder=6)
+    ax.text(right_box_left + 1.30, y, text,
+            ha='left', va='center', fontsize=9, color=GRAY,
+            multialignment='left', linespacing=1.35, zorder=6)
 
 # ---------- 标题 + 图例 ----------
 ax.text(0.5, 0.975, 'Veeva 发展脉络 · 突出 Safety 与 AI 节点（精简版）',
         transform=ax.transAxes, ha='center', va='top',
-        fontsize=20, fontweight='bold', color=NAVY)
+        fontsize=22, fontweight='bold', color=NAVY)
 
 legend_elements = [
     mpatches.Patch(facecolor=NAVY, label='Safety 里程碑'),
@@ -139,10 +147,11 @@ legend_elements = [
     mpatches.Patch(facecolor=MILESTONE, label='关键里程碑（★）'),
     mpatches.Patch(facecolor=GRAY, label='公司常规事件'),
 ]
-legend = ax.legend(handles=legend_elements, loc='lower left', fontsize=11,
+legend = ax.legend(handles=legend_elements, loc='lower left', fontsize=12,
                   frameon=True, facecolor=WHITE, edgecolor=NAVY,
                   framealpha=0.95, ncol=2)
 
+# ---------- 清理坐标轴 ----------
 ax.set_yticks([])
 ax.spines['left'].set_visible(False)
 ax.spines['right'].set_visible(False)
@@ -150,7 +159,7 @@ ax.spines['top'].set_visible(False)
 ax.spines['bottom'].set_visible(False)
 ax.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
 
-plt.tight_layout(pad=2.5)
+# 不用 tight_layout，不用 bbox_inches='tight'，直接保存原画布区域
 out = '/workspace/Veeva发展脉络_v3_紧凑版.png'
-plt.savefig(out, dpi=160, bbox_inches='tight', facecolor=WHITE)
+plt.savefig(out, dpi=160, facecolor=WHITE)
 print(f'saved {out}')
