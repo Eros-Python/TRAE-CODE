@@ -95,8 +95,8 @@ box_w = 5.0
 box_center_x = (ax.get_xlim()[0] + ax.get_xlim()[1]) / 2
 right_box_left = box_center_x - box_w / 2
 right_box_w = box_w
-right_box_y = -4.2              # 框底下移（从 -3.8 → -4.2）
-right_box_h = 5.8               # 高度缩小（从 7.6 → 5.8），框顶 = 1.6，底部对齐图例
+right_box_y = -4.2              # 框底不动
+right_box_h = 6.2               # 高度从 5.8 → 6.2，多给空间放标题+间距
 
 right_box = FancyBboxPatch(
     (right_box_left, right_box_y),
@@ -106,8 +106,8 @@ right_box = FancyBboxPatch(
 )
 ax.add_patch(right_box)
 
-# 框标题
-ax.text(right_box_left + right_box_w / 2, right_box_y + right_box_h - 0.32,
+# 框标题 —— 框顶下 0.30
+ax.text(right_box_left + right_box_w / 2, right_box_y + right_box_h - 0.30,
         '关键 Impact（2013–2026）',
         ha='center', va='center', fontsize=12, fontweight='bold', color=NAVY, zorder=5)
 
@@ -123,9 +123,9 @@ impact_lines = [
 ]
 
 bullet_colors = {'●': NAVY, '★': MILESTONE, '▲': ACCENT}
-# 内容往下移，紧凑排列，刚好填满缩小后的框
-impact_start_y = right_box_y + right_box_h - 0.45   # 从框顶往下 0.45 开始第一条
-line_spacing = 0.68
+# 标题 0.30 + 间距 0.55 = 从框顶下 0.85 开始第一条 Impact
+impact_start_y = right_box_y + right_box_h - 0.85
+line_spacing = 0.70
 
 for i, (bullet, yr, text) in enumerate(impact_lines):
     y = impact_start_y - i * line_spacing
@@ -138,7 +138,7 @@ for i, (bullet, yr, text) in enumerate(impact_lines):
             multialignment='left', linespacing=1.35, zorder=6)
 
 # ---------- 标题 + 图例 ----------
-ax.text(0.5, 0.975, 'Veeva 发展脉络 · 突出 Safety 与 AI 节点（精简版）',
+ax.text(0.5, 0.975, 'Veeva 发展脉络 · 突出 Safety 与 AI 节点',
         transform=ax.transAxes, ha='center', va='top',
         fontsize=22, fontweight='bold', color=NAVY)
 
