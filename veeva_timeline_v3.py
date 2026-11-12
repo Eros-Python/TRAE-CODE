@@ -44,10 +44,11 @@ for idx, yr, *_ in events:
     ax.text(idx, timeline_y - 0.55, yr, ha='center', va='top',
             fontsize=12, fontweight='bold', color=NAVY)
 
-# ---------- 节点布局 ----------
-# 上方 (7 个主事件): idx 3,4,5,6,7,8,9 —— 全部 Safety/AI/Milestone
-# 下方 (3 个公司事件): idx 0,1,2
-upper = {3, 4, 5, 6, 7, 8, 9}
+# ---------- 节点布局：严格上下交替 ----------
+# 10 个事件：0下 1上 2下 3上 4下 5上 6下 7上 8下 9上
+# 这样里程碑也自然错开
+upper = {1, 3, 5, 7, 9}   # 上：2010市占第一 / 2013上市 / 2021 PBC / 2023 Suite补全 / 2026 UCB
+lower = {0, 2, 4, 6, 8}   # 下：2007成立 / 2011进中国 / 2019 Suite+NLP / 2022 22R3 / 2025 AI Agent
 
 for idx, yr, color, title, sub in events:
     # 节点大小
