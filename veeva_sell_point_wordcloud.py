@@ -252,8 +252,8 @@ for k, v in freq.items():
     label = label_map.get(k, k)
     final_freq[label] += v
 
-# real-time 再额外 +1.0 作为用户点名强调
-final_freq['real-time'] = final_freq.get('real-time', 0) + 2.0
+# real-time 保持原始命中权重（不加额外加权，约 6.0）
+# final_freq['real-time'] = final_freq.get('real-time', 0) + 0.0
 
 print("\nFinal labels for word cloud:")
 for k, v in final_freq.most_common():
@@ -283,7 +283,7 @@ wc = WordCloud(
     height=900,
     background_color='white',
     max_words=60,
-    prefer_horizontal=0.62,
+    prefer_horizontal=1.0,
     collocations=False,
     color_func=color_func,
     min_font_size=14,
