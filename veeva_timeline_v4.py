@@ -91,7 +91,7 @@ box_center_x = (ax.get_xlim()[0] + ax.get_xlim()[1]) / 2
 right_box_left = box_center_x - box_w / 2
 right_box_w = box_w
 right_box_y = -4.0
-right_box_h = 6.0
+right_box_h = 7.2               # 框加高 6.0 → 7.2，给多行 Impact 留空间
 
 right_box = FancyBboxPatch(
     (right_box_left, right_box_y),
@@ -118,7 +118,7 @@ impact_lines = [
 
 bullet_colors = {'●': NAVY, '★': MILESTONE, '▲': ACCENT}
 impact_start_y = right_box_y + right_box_h - 0.85
-line_spacing = 0.72
+line_spacing = 0.92             # 行距从 0.72 → 0.92，避免多行内容和下一条重叠
 
 for i, (bullet, yr, text) in enumerate(impact_lines):
     y = impact_start_y - i * line_spacing
