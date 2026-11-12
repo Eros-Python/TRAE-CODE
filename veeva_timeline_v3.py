@@ -38,7 +38,7 @@ n = len(events)
 #   y:  4.5 ~ 6.0      timeline 下方节点标题区（不会低于 y=4.0）
 #   y: -3.0 ~  3.5     Impact 框区
 ax.set_xlim(-0.7, n - 0.1)
-ax.set_ylim(-3.5, 13.8)
+ax.set_ylim(-4.5, 13.8)   # 底部从 -3.5 → -4.5，框底能完整可见
 ax.set_aspect('auto')
 
 # ---------- 时间轴 ----------
@@ -90,13 +90,12 @@ for idx, yr, color, title, sub in events:
                 ha='center', va='center', fontsize=7.8, color=GRAY, style='italic',
                 multialignment='center')
 
-# ---------- Impact 框：右移 + 内容居中 ----------
-# 框：左边缘 4.5（比之前 4.0 右移 0.5，避开 2025 下方标签），右边缘贴画布右边
+# ---------- Impact 框：左边缘再右移 + 宽度缩小 + 高度加高 ----------
 right_box_right = n - 0.1       # 右边缘（贴紧画布）
-right_box_left = 4.5            # 右移 0.5，避开左侧标签
-right_box_w = right_box_right - right_box_left
-right_box_y = -3.2
-right_box_h = 6.4
+right_box_left = 5.5            # 左边缘从 4.5 右移到 5.5，空白大幅减少
+right_box_w = right_box_right - right_box_left   # 宽度 4.4
+right_box_y = -4.0              # 底部再下 0.8，给更高的框留空间
+right_box_h = 7.8               # 高度从 6.4 → 7.8，容纳 3 行 Impact
 
 right_box = FancyBboxPatch(
     (right_box_left, right_box_y),
