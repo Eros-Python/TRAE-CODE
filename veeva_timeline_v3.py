@@ -124,23 +124,18 @@ impact_lines = [
 ]
 
 bullet_colors = {'●': NAVY, '★': MILESTONE, '▲': ACCENT}
-impact_start_y = right_box_y + right_box_h - 0.70
-line_spacing = 0.72
+impact_start_y = right_box_y + right_box_h - 0.68
+line_spacing = 0.70
 
 for i, (bullet, yr, text) in enumerate(impact_lines):
     y = impact_start_y - i * line_spacing
     col = bullet_colors.get(bullet, GRAY)
-    # bullet+年份（带色粗体）左半居中，正文（灰色）右半居中
-    # 用两段 text，分别以框中心往左/右偏一点对齐
-    # 先画正文（浅灰），再画 bullet+年份（带色粗体）叠上去
-    bullet_yr_text = f'{bullet} {yr}'
-    ax.text(right_box_left + right_box_w / 2, y, bullet_yr_text,
-            ha='right', va='center', fontsize=9.5, fontweight='bold', color=col, zorder=6)
-    # bullet+年份和正文之间留点空格：用空白把正文往右推
-    spacing = '    '  # 4 个空格
-    ax.text(right_box_left + right_box_w / 2 + 0.30, y, spacing + text,
-            ha='left', va='center', fontsize=9, color=GRAY,
-            multialignment='left', linespacing=1.35, zorder=5)
+    # 全部左对齐，字体加大
+    ax.text(right_box_left + 0.25, y, f'{bullet} {yr}',
+            ha='left', va='center', fontsize=10.5, fontweight='bold', color=col, zorder=6)
+    ax.text(right_box_left + 1.35, y, text,
+            ha='left', va='center', fontsize=10, color=GRAY,
+            multialignment='left', linespacing=1.35, zorder=6)
 
 # ---------- 标题 + 图例 ----------
 ax.text(0.5, 0.975, 'Veeva 发展脉络 · 突出 Safety 与 AI 节点（精简版）',
